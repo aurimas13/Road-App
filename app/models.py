@@ -39,6 +39,7 @@ class Weather(db.Model):
     krituliu_tipas = db.Column(db.String(140), nullable=True)
     pavadinimas_perspejimas = db.Column(db.String(140), nullable=True)
     kodas = db.Column(db.String(140), nullable=True)
+    batchId = db.Column(db.Integer, db.ForeignKey('batch_update.batchId'), nullable=True)
 
     def __repr__(self):
         return '<Weather Condition of {} with id {}>'.format(self.pavadinimas, self.id)
@@ -67,6 +68,7 @@ class Traffic(db.Model):
     numberOfVehicles = db.Column(db.Integer, nullable=True)
     averageSpeed = db.Column(db.REAL, nullable=True)
     trafficType = db.Column(db.String(140), nullable=True)
+    batchId = db.Column(db.Integer, db.ForeignKey('batch_update.batchId'), nullable=True)
 
     def __repr__(self):
         return '<Traffic {} of id {} has average speed of {}>'.format(self.traffic_name, self.id, self.averageSpeed)

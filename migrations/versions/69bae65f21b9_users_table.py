@@ -1,8 +1,8 @@
 """users table
 
-Revision ID: b9cd2869322e
+Revision ID: 69bae65f21b9
 Revises: 
-Create Date: 2022-10-28 20:40:48.092248
+Create Date: 2022-10-29 14:03:22.579241
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b9cd2869322e'
+revision = '69bae65f21b9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,6 +44,8 @@ def upgrade():
     sa.Column('numberOfVehicles', sa.Integer(), nullable=True),
     sa.Column('averageSpeed', sa.REAL(), nullable=True),
     sa.Column('trafficType', sa.String(length=140), nullable=True),
+    sa.Column('batchId', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['batchId'], ['batch_update.batchId'], ),
     sa.PrimaryKeyConstraint('traffic_auto_id')
     )
     op.create_table('weather',
@@ -82,6 +84,8 @@ def upgrade():
     sa.Column('krituliu_tipas', sa.String(length=140), nullable=True),
     sa.Column('pavadinimas_perspejimas', sa.String(length=140), nullable=True),
     sa.Column('kodas', sa.String(length=140), nullable=True),
+    sa.Column('batchId', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['batchId'], ['batch_update.batchId'], ),
     sa.PrimaryKeyConstraint('weather_auto_id')
     )
     # ### end Alembic commands ###

@@ -5,8 +5,8 @@ from app import app, db
 from app.models import Weather, Traffic, BatchUpdate
 from src.data_validation import WeatherValidate, TrafficValidate
 from pprint import PrettyPrinter
-pp = PrettyPrinter()
 
+pp = PrettyPrinter()
 
 # Fetch Data
 url_weather = 'https://eismoinfo.lt/weather-conditions-service'
@@ -15,14 +15,15 @@ response = requests.get(url_weather)
 resp = response.json()
 response_traffic = requests.get(url_traffic)
 resp_traffic = response_traffic.json()
+CURRENT_DATE = datetime.now().strftime('%Y-%m-%d %H:%M')
 
 with app.app_context():
     for json_value in resp[:10]:
-        if not json_value['surinkimo_data']:
-            print("LALA")
+        # if not json_value['surinkimo_data']:
+        #     print("LALA")
         WeatherValidate().load(json_value)
-        print(json_value['surinkimo_data'])
-        # print(datetime.strptime(json_value["surinkimo_data"], '%Y-%m-%d %H:%M'), json_value["surinkimo_data"])
+        # print(json_value['surinkimo_data'])
+        print(datetime.strptime(json_value["surinkimo_data"], '%Y-%m-%d %H:%M'), json_value["surinkimo_data"])
         pavadinimas_perspejimas = None
         kodas = None
         if "perspejimai" in json_value:
@@ -64,46 +65,39 @@ with app.app_context():
             konstrukcijos_temp_170=json_value["konstrukcijos_temp_170"],
             konstrukcijos_temp_200=json_value["konstrukcijos_temp_200"],
             pavadinimas_perspejimas=pavadinimas_perspejimas,
-            kodas=kodas
+            kodas=kodas,
+            # batchId=db.Column(db.Integer, db.ForeignKey('batch_update.batchId'))
         )
         db.session.add(weather_properties)
         db.session.commit()
 
 
     for json_value in resp_traffic[:10]:
-        TrafficValidate().load(json_value)
-        traffic_intensity = Traffic(
-            id=json_value["id"],
-            traffic_name=json_value["name"],
-            road_number=json_value["roadNr"],
-            road_name=json_value["roadName"],
-            km=json_value["km"],
-            x=json_value["x"],
-            y=json_value["y"],
-            timeInterval=json_value["timeInterval"],
-            date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z')
-        )
-
-        if "roadSegments" in json_value:
-            for i in range(len(json_value['roadSegments'])):
-                road_segment = json_value["roadSegments"][i]
-                traffic_intensity_additional = Traffic(
-                    direction=road_segment['direction'],
-                    startX=road_segment["startX"],
-                    startY=road_segment["startY"],
-                    endX=road_segment["endX"],
-                    endY=road_segment["endY"],
-                    winterSpeed=road_segment["winterSpeed"],
-                    summerSpeed=road_segment["summerSpeed"],
-                    numberOfVehicles=road_segment["numberOfVehicles"],
-                    averageSpeed=road_segment["averageSpeed"],
-                    trafficType=road_segment["trafficType"]
-                )
-        #         print(road_segment['direction'])
-        #         db.session.add(traffic_intensity)
-        #         db.session.commit()
-        #         db.session.add(traffic_intensity_additional)
-        #         db.session.commit()
-        # else:
-        #     db.session.add(traffic_intensity)
-        #     db.session.commit()
+        for i in range(len(json_value['roadSegments'])):
+            road_segment = json_value["roadSegments"][i]
+            TrafficValidate().load(json_value)
+            traffic_intensity = Traffic(
+                id=json_value["id"],
+                traffic_name=json_value["name"],
+                road_number=json_value["roadNr"],
+                road_name=json_value["roadName"],
+                km=json_value["km"],
+                x=json_value["x"],
+                y=json_value["y"],
+                timeInterval=json_value["timeInterval"],
+                date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'),
+                direction=road_segment['direction'],
+                startX=road_segment["startX"],
+                startY=road_segment["startY"],
+                endX=road_segment["endX"],
+                endY=road_segment["endY"],
+                winterSpeed=road_segment["winterSpeed"],
+                summerSpeed=road_segment["summerSpeed"],
+                numberOfVehicles=road_segment["numberOfVehicles"],
+                averageSpeed=road_segment["averageSpeed"],
+                trafficType=road_segment["trafficType"],
+                # batchId=db.Column(db.Integer, db.ForeignKey('batch_update.batchId'))
+            )
+            # pp.pprint(road_segment['direction'])
+            db.session.add(traffic_intensity)
+            db.session.commit()

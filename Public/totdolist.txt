@@ -10,7 +10,7 @@
 9-10. Create a script for cronjob that queries real-time APIs
 11. Use the front end for visualisations (optional because I want)
 12. Basically you'll have programs with two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
-13. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
-14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
-15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc)
+DONE 13. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
+DONE 14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
+15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc) CRON JOB
 16. Dirbk su SQLite pirma ir sukurus viska veikiancio tada pabandyk implementuoti ir MySQL.
