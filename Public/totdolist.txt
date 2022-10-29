@@ -1,0 +1,16 @@
+1. Use SQLite or MySQL to store real time data in a database
+2. Create two endpoints (/weather_conditions & /traffic_intensity)
+3. For two endpoints return averages of numeric metrics (temperature, wind speed, number of vehicles) for a given period
+4. API endpoints should acccept the id or multiple ids of the device and the period for which to calculate the averages
+5. Accepting ids and the period for a given period
+6. Think of a mechanism to store data from real time API's in a database
+7. Read about pull data from real time API (look for the best)
+8. Create and use Docker with MySQL
+9-10. Creat job that is running ~10 mins which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
+9-10. Create a script for cronjob that queries real-time APIs
+11. Use the front end for visualisations (optional because I want)
+12. Basically you'll have programs with two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
+13. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
+14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
+15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc)
+16. Dirbk su SQLite pirma ir sukurus viska veikiancio tada pabandyk implementuoti ir MySQL.
