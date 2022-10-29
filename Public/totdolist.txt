@@ -4,7 +4,7 @@
 4. API endpoints should acccept the id or multiple ids of the device and the period for which to calculate the averages
 5. Accepting ids and the period for a given period
 6. Think of a mechanism to store data from real time API's in a database
-7. Read about pull data from real time API (look for the best)
+DONE 7. Read about pull data from real time API (look for the best)
 8. Create and use Docker with MySQL
 9-10. Creat job that is running ~10 mins which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
 9-10. Create a script for cronjob that queries real-time APIs
