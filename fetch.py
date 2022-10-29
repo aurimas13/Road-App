@@ -57,9 +57,9 @@ with app.app_context():
                         kodas = json_value["perspejimai"][i]['kodas']
 
                 weather_properties = Weather(
-                    surinkimo_data_unix=json_value["surinkimo_data_unix"],  # reikia kad butu unix date
+                    id=json_value["id"],
+                    surinkimo_data_unix=json_value["surinkimo_data_unix"],
                     surinkimo_data=datetime.strptime(json_value["surinkimo_data"], '%Y-%m-%d %H:%M'),
-                    weather_auto_id=json_value["id"],
                     irenginys=json_value["irenginys"],
                     numeris=json_value["numeris"],
                     pavadinimas=json_value["pavadinimas"],
@@ -110,7 +110,7 @@ with app.app_context():
                     x=json_value["x"],
                     y=json_value["y"],
                     timeInterval=json_value["timeInterval"],
-                    date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'),
+                    date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'), # suhandle'inti del laiko nes dabar ziuriu tik kad weather ar yra nauju
                     direction=road_segment['direction'],
                     startX=road_segment["startX"],
                     startY=road_segment["startY"],
