@@ -125,4 +125,3 @@ with app.app_context():
                 )
                 db.session.add(traffic_intensity)
                 db.session.commit()
-
