@@ -78,7 +78,7 @@ class BatchUpdate(db.Model):
 
     """     BatchUpdate Schema     """
     batchId = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    batchUpdateDate = db.Column(db.String(64))
+    batchUpdateDate = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
-        return '<Batch id {} was updated on {}>'.format(self.batchId, self.batchUpdateDate)
+        return '{}'.format(self.batchUpdateDate)
