@@ -101,3 +101,4 @@ with app.app_context():
             # pp.pprint(road_segment['direction'])
             db.session.add(traffic_intensity)
             db.session.commit()
+
