@@ -36,6 +36,7 @@ with app.app_context():
     db.session.commit()
 
     pp.pprint(new_batch_update.batchId)
+    s = set()
 
     if resp[0]["surinkimo_data"] > datetime.strftime(batch_date, '%Y-%m-%d %H:%M'):
         batch_date = resp[0]["surinkimo_data"]
@@ -96,32 +97,55 @@ with app.app_context():
                 db.session.add(weather_properties)
                 db.session.commit()
 
-
         for json_value in resp_traffic[:10]:
-            for i in range(len(json_value['roadSegments'])):
-                road_segment = json_value["roadSegments"][i]
-                TrafficValidate().load(json_value)
-                traffic_intensity = Traffic(
-                    id=json_value["id"],
-                    traffic_name=json_value["name"],
-                    road_number=json_value["roadNr"],
-                    road_name=json_value["roadName"],
-                    km=json_value["km"],
-                    x=json_value["x"],
-                    y=json_value["y"],
-                    timeInterval=json_value["timeInterval"],
-                    date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'), # suhandle'inti del laiko nes dabar ziuriu tik kad weather ar yra nauju
-                    direction=road_segment['direction'],
-                    startX=road_segment["startX"],
-                    startY=road_segment["startY"],
-                    endX=road_segment["endX"],
-                    endY=road_segment["endY"],
-                    winterSpeed=road_segment["winterSpeed"],
-                    summerSpeed=road_segment["summerSpeed"],
-                    numberOfVehicles=road_segment["numberOfVehicles"],
-                    averageSpeed=road_segment["averageSpeed"],
-                    trafficType=road_segment["trafficType"],
-                    batchId=new_batch_update.batchId
-                )
-                db.session.add(traffic_intensity)
-                db.session.commit()
+            # print(s)
+            if json_value["id"] not in s:
+                pp.pprint(s)
+                s.add(json_value["id"])
+                if json_value['roadSegments'] != []:
+                    for i in range(len(json_value['roadSegments'])): # Yra ir variantu kai nera roadSegments
+                        road_segment = json_value["roadSegments"][i]
+                        TrafficValidate().load(json_value)
+                        traffic_intensity = Traffic(
+                            id=json_value["id"],
+                            traffic_name=json_value["name"],
+                            road_number=json_value["roadNr"],
+                            road_name=json_value["roadName"],
+                            km=json_value["km"],
+                            x=json_value["x"],
+                            y=json_value["y"],
+                            timeInterval=json_value["timeInterval"],
+                            date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'), # suhandle'inti del laiko nes dabar ziuriu tik kad weather ar yra nauju, o su traffic paima bet yra duplikatu
+                            direction=road_segment['direction'],
+                            startX=road_segment["startX"],
+                            startY=road_segment["startY"],
+                            endX=road_segment["endX"],
+                            endY=road_segment["endY"],
+                            winterSpeed=road_segment["winterSpeed"],
+                            summerSpeed=road_segment["summerSpeed"],
+                            numberOfVehicles=road_segment["numberOfVehicles"],
+                            averageSpeed=road_segment["averageSpeed"],
+                            trafficType=road_segment["trafficType"],
+                            batchId=new_batch_update.batchId
+                        )
+                        db.session.add(traffic_intensity)
+                        db.session.commit()
+                else:
+                    for i in range(len(json_value['roadSegments'])):  # Yra ir variantu kai nera roadSegments Ar tesingai parasiau (paklausti ar [] ar '[]'?
+                        road_segment = json_value["roadSegments"][i]
+                        TrafficValidate().load(json_value)
+                        traffic_intensity = Traffic(
+                            id=json_value["id"],
+                            traffic_name=json_value["name"],
+                            road_number=json_value["roadNr"],
+                            road_name=json_value["roadName"],
+                            km=json_value["km"],
+                            x=json_value["x"],
+                            y=json_value["y"],
+                            timeInterval=json_value["timeInterval"],
+                            date=datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z'),
+                            batchId=new_batch_update.batchId
+                        )
+                        db.session.add(traffic_intensity)
+                        db.session.commit()
+
