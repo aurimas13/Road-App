@@ -3,7 +3,6 @@ import pytz
 
 import requests
 from app import app, db
-from sqlalchemy import func
 from app.models import Weather, Traffic, BatchUpdate
 from src.data_validation import WeatherValidate, TrafficValidate
 from pprint import PrettyPrinter
