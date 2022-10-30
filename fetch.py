@@ -10,8 +10,8 @@ from pprint import PrettyPrinter
 pp = PrettyPrinter()
 
 # Fetch Data
-url_weather = 'https://eismoinfo.lt/weather-conditions-service'
-url_traffic = 'https://eismoinfo.lt/traffic-intensity-service'
+url_weather = 'https://eismoinfo.lt/weather-conditions-service' # i env file'a
+url_traffic = 'https://eismoinfo.lt/traffic-intensity-service' # i env file'a
 response = requests.get(url_weather)
 resp = response.json()
 response_traffic = requests.get(url_traffic)

@@ -30,25 +30,18 @@ def weather_conditions():
     """
     if request.method == 'GET':
 
-        weather_link = 'http://127.0.0.1:5000/weather_conditions?ids=310,308,363,1208&period_start=2022-10-30%252012:00:00'
-        decoded_date_start = urllib.parse.unquote(request.args.get('period_start'))
-        period_start = datetime.strptime(decoded_date_start, '%Y-%m-%d %X')
+        weather_link = 'http://127.0.0.1:5000/weather_conditions?ids=310,308,363,1208&date_from=2022-10-30%252012:00:00'
+        decoded_date = urllib.parse.unquote(request.args.get('date_from'))
+        period = datetime.strptime(decoded_date, '%Y-%m-%d %X')
         id_list = request.args.get('ids').split(',')
-        period_end = None
         query = db.session.query(Weather.oro_temperatura, Weather.vejo_greitis_vidut,
-                                     Weather.dangos_temperatura, Weather.id)\
-                .filter(Weather.id.in_(id_list))\
-                .filter(Weather.surinkimo_data >= period_start)
-        if request.args.get('period_end'):
-            decoded_date_end = urllib.parse.unquote(request.args.get('period_end'))
-            period_end = datetime.strptime(decoded_date_end, '%Y-%m-%d %X')
-            query_results = query.filter(Weather.surinkimo_data <= period_end).all()
-        else:
-            query_results = query.all()
+                                 Weather.dangos_temperatura, Weather.id)\
+            .filter(Weather.id.in_(id_list))\
+            .filter(Weather.surinkimo_data >= period).all()
 
         result_dict = {}
 
-        for row in query_results:
+        for row in query:
             if row['id'] not in result_dict:
                 result_dict[row['id']] = {
                     'dangos_temperatura': 0,
@@ -57,6 +50,8 @@ def weather_conditions():
                     'oro_temperatura_cnt': 0,
                     'vejo_greitis': 0,
                     'vejo_greitis_cnt': 0,
+                    'period_start': 0,
+                    'period_end': None,
                 }
 
             dangos_temperatura = row['dangos_temperatura']
@@ -80,8 +75,8 @@ def weather_conditions():
             item = result_dict[key]
             resp_per_id = {
                 'id': key,
-                'period_start': period_start,
-                'period_end': period_end,
+                'period_start': 0,
+                'period_end': None,
                 'statistics': {
                     'dangos_temperatura_avg': item['dangos_temperatura'] / item['dangos_temperatura_cnt']\
                         if item['dangos_temperatura_cnt'] != 0 else 0,
@@ -103,32 +98,41 @@ def traffic_intensity():
     in the road for a given period of an id or ids.
     """
     if request.method == 'GET':
-        traffic_link = 'http://127.0.0.1:5000/traffic_intensity?ids=1805,3504,4398,23&period_start=2022-10-30%252012:00:00'
-        decoded_date_start = urllib.parse.unquote(request.args.get('period_start'))
-        period_start = datetime.strptime(decoded_date_start, '%Y-%m-%d %X')
+        traffic_link = 'http://127.0.0.1:5000/traffic_intensity?ids=1805,3504,4398,23&date_from=2022-10-30%252012:00:00'
+        decoded_date = urllib.parse.unquote(request.args.get('date_from'))
+        period = datetime.strptime(decoded_date, '%Y-%m-%d %X')
         id_list = request.args.get('ids').split(',')
-        period_end = None
-        query = db.session.query(Traffic.winterSpeed, Traffic.summerSpeed, Traffic.numberOfVehicles,
-                                 Traffic.averageSpeed, Traffic.id, Traffic.date) \
-            .filter(Traffic.id.in_(id_list)) \
-            .filter(Traffic.date >= period_start)
-        if request.args.get('period_end'):
-            decoded_date_end = urllib.parse.unquote(request.args.get('period_end'))
-            period_end = datetime.strptime(decoded_date_end, '%Y-%m-%d %X')
-            query_results = query.filter(Traffic.date <= period_end).all()
-        else:
-            query_results = query.all()
+        query = db.session.query(Traffic.winterSpeed, Traffic.summerSpeed, Traffic.numberOfVehicles,\
+                                 Traffic.averageSpeed, Traffic.id, Traffic.date)\
+            .filter(Traffic.id.in_(id_list))\
+            .filter(Traffic.date >= period).all()
 
         result_dict = {}
 
-        for row in query_results:
+        for row in query:
             if row['id'] not in result_dict:
                 result_dict[row['id']] = {
+                    'winterSpeed': 0,
+                    'winterSpeed_cnt': 0,
+                    'summerSpeed': 0,
+                    'summerSpeed_cnt': 0,
                     'averageSpeed': 0,
                     'averageSpeed_cnt': 0,
                     'numberOfVehicles': 0,
                     'numberOfVehicles_cnt': 0,
+                    'period_start' : 0,
+                    'period_end' : None,
                 }
+
+            winterSpeed = row['winterSpeed']
+            if winterSpeed:
+                result_dict[row['id']]['winterSpeed'] += winterSpeed
+                result_dict[row['id']]['winterSpeed_cnt'] += 1
+
+            summerSpeed = row['summerSpeed']
+            if summerSpeed:
+                result_dict[row['id']]['summerSpeed'] += summerSpeed
+                result_dict[row['id']]['summerSpeed_cnt'] += 1
 
             averageSpeed = row['averageSpeed']
             if averageSpeed:
@@ -145,9 +149,13 @@ def traffic_intensity():
             item = result_dict[key]
             resp_per_id = {
                 'id': key,
-                'period_start': period_start,
-                'period_end' : period_end,
+                'period_start': 0,
+                'period_end' : None,
                 'statistics' : {
+                    'winterSpeed_avg': item['winterSpeed'] / item['winterSpeed_cnt'] \
+                        if item['winterSpeed_cnt'] != 0 else 0,
+                    'summerSpeed_avg': item['summerSpeed'] / item['summerSpeed_cnt'] \
+                        if item['summerSpeed_cnt'] != 0 else 0,
                     'averageSpeed_avg': item['averageSpeed'] / item['averageSpeed_cnt'] \
                         if item['averageSpeed_cnt'] != 0 else 0,
                     'numberOfVehicles_avg': item['numberOfVehicles'] / item['numberOfVehicles_cnt'] \
