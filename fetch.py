@@ -1,22 +1,23 @@
-from datetime import datetime
+import os
 import pytz
-import requests
 from app import app, db
 from app.models import Weather, Traffic, BatchUpdate
 from app.data_validation import WeatherValidate, TrafficValidate
+from app.helper import fetch_data
+from datetime import datetime
 from pprint import PrettyPrinter
-
 pp = PrettyPrinter()
 
-# Fetch Data
-url_weather = 'https://eismoinfo.lt/weather-conditions-service' # i env file'a
-url_traffic = 'https://eismoinfo.lt/traffic-intensity-service' # i env file'a
-response = requests.get(url_weather)
-resp = response.json()
-response_traffic = requests.get(url_traffic)
-resp_traffic = response_traffic.json()
+# Define variables
+URL_WEATHER_DATABASE = os.getenv("URL_WEATHER_DATABASE")
+URL_TRAFFIC_DATABASE = os.getenv("URL_TRAFFIC_DATABASE")
 CURRENT_DATE = datetime.utcnow()
-s = set()
+
+# Fetch Data
+resp_weather = fetch_data(URL_WEATHER_DATABASE)
+resp_traffic = fetch_data(URL_TRAFFIC_DATABASE)
+
+pp.pprint(type(resp_weather))
 
 with app.app_context():
 
@@ -29,7 +30,7 @@ with app.app_context():
     db.session.add(new_batch_update)
     db.session.commit()
 
-    for json_value in resp[:10]:
+    for json_value in resp_weather[:10]:
         local_timezone = pytz.timezone("Europe/Vilnius")
         result_surinkimo_data = datetime.strptime(json_value["surinkimo_data"], '%Y-%m-%d %H:%M')
         local_surinkimo_data = local_timezone.localize(result_surinkimo_data)

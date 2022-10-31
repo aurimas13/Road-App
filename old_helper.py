@@ -1,46 +1,27 @@
 import urllib
+
 import requests
 from urllib import parse
+from app import app, db
 from flask import request
 from datetime import datetime
 
 
 def fetch_data(url):
-    """
-    Method to fetch data from an API request.
-
-    :param url: string
-    :return: list of dictionaries
-    """
     response = requests.get(url)
     return response.json()
 
 
 def decode_periods_and_ids(idx, period_from, period_until=None):
-    """
-
-    :param idx: list of tuples
-    :param period_from: datetime.datetime
-    :param period_until: datetime.datetime
-    :return: tuple
-    """
     decoded_period_start = urllib.parse.unquote(period_from)
     period_start = datetime.strptime(decoded_period_start, '%Y-%m-%d %X')
-    decoded_period_end = urllib.parse.unquote(request.args.get('period_end')) if period_until is not None else None
-    period_end = datetime.strptime(decoded_period_end, '%Y-%m-%d %X') if period_until is not None else None
+    decoded_period_end = urllib.parse.unquote(request.args.get('period_end')) if period_until != None else None
+    period_end = datetime.strptime(decoded_period_end, '%Y-%m-%d %X') if period_until != None else None
     id_list = idx.split(',')
     return id_list, period_start, period_end
 
 
 def extract_weather_data(query, period_from, period_until):
-    """
-    Method to extract weather condition numerical information per query.
-
-    :param query: list of tuples
-    :param period_from: datetime.datetime
-    :param period_until: datetime.datetime
-    :return: list of dictionaries
-    """
     result_dict = {}
 
     for row in query:
@@ -78,11 +59,11 @@ def extract_weather_data(query, period_from, period_until):
             'period_start': period_from,
             'period_end': period_until,
             'statistics': {
-                'dangos_temperatura_avg': float("{:.1f}".format(item['dangos_temperatura'] / item['dangos_temperatura_cnt'])) \
+                'dangos_temperatura_avg': item['dangos_temperatura'] / item['dangos_temperatura_cnt'] \
                     if item['dangos_temperatura_cnt'] != 0 else 0,
-                'oro_temperatura_avg': float("{:.1f}".format(item['oro_temperatura'] / item['oro_temperatura_cnt'])) \
+                'oro_temperatura_avg': item['oro_temperatura'] / item['oro_temperatura_cnt'] \
                     if item['oro_temperatura_cnt'] != 0 else 0,
-                'vejo_greitis_avg': float("{:.1f}".format(item['vejo_greitis'] / item['vejo_greitis_cnt'])) \
+                'vejo_greitis_avg': item['vejo_greitis'] / item['vejo_greitis_cnt'] \
                     if item['vejo_greitis_cnt'] != 0 else 0,
             }
         }
@@ -92,14 +73,6 @@ def extract_weather_data(query, period_from, period_until):
 
 
 def extract_traffic_data(query, period_from, period_until):
-    """
-    Method to extract traffic intensity numerical information per query.
-
-    :param query: list
-    :param period_from: datetime.datetime
-    :param period_until: datetime.datetime
-    :return: list of dictionaries or dictionary
-    """
     result_dict = {}
 
     for row in query:
@@ -129,9 +102,9 @@ def extract_traffic_data(query, period_from, period_until):
             'period_start': period_from,
             'period_end': period_until,
             'statistics': {
-                'averageSpeed_avg': float("{:.1f}".format(item['averageSpeed'] / item['averageSpeed_cnt'])) \
+                'averageSpeed_avg': item['averageSpeed'] / item['averageSpeed_cnt'] \
                     if item['averageSpeed_cnt'] != 0 else 0,
-                'numberOfVehicles_avg': float("{:.1f}".format(item['numberOfVehicles'] / item['numberOfVehicles_cnt'])) \
+                'numberOfVehicles_avg': item['numberOfVehicles'] / item['numberOfVehicles_cnt'] \
                     if item['numberOfVehicles_cnt'] != 0 else 0,
             }
         }

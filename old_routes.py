@@ -30,7 +30,7 @@ def weather_conditions():
     """
     if request.method == 'GET':
 
-        weather_link = 'http://127.0.0.1:5000/weather_conditions?ids=310,308,363,1208&date_from=2022-10-30%252012:00:00'
+        weather_link = 'http://127.0.0.1:5000/weather_conditions?ids=310,308,363,1208&period_start=2022-10-30%252012:00:00&period_end=2022-10-31%252016:00:00'
         decoded_date = urllib.parse.unquote(request.args.get('date_from'))
         period = datetime.strptime(decoded_date, '%Y-%m-%d %X')
         id_list = request.args.get('ids').split(',')
@@ -98,7 +98,7 @@ def traffic_intensity():
     in the road for a given period of an id or ids.
     """
     if request.method == 'GET':
-        traffic_link = 'http://127.0.0.1:5000/traffic_intensity?ids=1805,3504,4398,23&date_from=2022-10-30%252012:00:00'
+        traffic_link = 'http://127.0.0.1:5000/traffic_intensity?ids=1805,3504,4398,23&period_start=2022-10-30%252012:00:00&period_end=2022-10-31%252016:00:00'
         decoded_date = urllib.parse.unquote(request.args.get('date_from'))
         period = datetime.strptime(decoded_date, '%Y-%m-%d %X')
         id_list = request.args.get('ids').split(',')
