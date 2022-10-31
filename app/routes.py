@@ -36,16 +36,30 @@ def weather_conditions():
             )
 
         if request.args.get('period_end'):
-            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'), request.args.get('period_end'),)
-            query = db.session.query(Weather.oro_temperatura, Weather.vejo_greitis_vidut,
-                                     Weather.dangos_temperatura, Weather.id) \
+            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
+                                                    request.args.get('period_end'), )
+            query = db.session.query(Weather.oro_temperatura, Weather.krituliu_kiekis, Weather.rasos_taskas,
+                                     Weather.vejo_greitis_vidut, Weather.vejo_greitis_maks,
+                                     Weather.konstrukcijos_temp_007, Weather.konstrukcijos_temp_020,
+                                     Weather.konstrukcijos_temp_050, Weather.konstrukcijos_temp_080,
+                                     Weather.konstrukcijos_temp_110, Weather.konstrukcijos_temp_130,
+                                     Weather.konstrukcijos_temp_140, Weather.konstrukcijos_temp_170,
+                                     Weather.konstrukcijos_temp_200,
+                                     Weather.sukibimo_koeficientas, Weather.dangos_temperatura, Weather.id) \
                 .filter(Weather.id.in_(decoded_values[0])) \
                 .filter(Weather.surinkimo_data >= decoded_values[1]) \
                 .filter(Weather.surinkimo_data <= decoded_values[2]).all()
         else:
-            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'), request.args.get('period_end'),)
-            query = db.session.query(Weather.oro_temperatura, Weather.vejo_greitis_vidut,
-                                     Weather.dangos_temperatura, Weather.id) \
+            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
+                                                    request.args.get('period_end'), )
+            query = db.session.query(Weather.oro_temperatura, Weather.krituliu_kiekis, Weather.rasos_taskas,
+                                     Weather.vejo_greitis_vidut, Weather.vejo_greitis_maks,
+                                     Weather.konstrukcijos_temp_007, Weather.konstrukcijos_temp_020,
+                                     Weather.konstrukcijos_temp_050, Weather.konstrukcijos_temp_080,
+                                     Weather.konstrukcijos_temp_110, Weather.konstrukcijos_temp_130,
+                                     Weather.konstrukcijos_temp_140, Weather.konstrukcijos_temp_170,
+                                     Weather.konstrukcijos_temp_200,
+                                     Weather.sukibimo_koeficientas, Weather.dangos_temperatura, Weather.id) \
                 .filter(Weather.id.in_(decoded_values[0])) \
                 .filter(Weather.surinkimo_data >= decoded_values[1]).all()
 
@@ -64,7 +78,8 @@ def traffic_intensity():
     """
     if request.method == 'GET':
         if request.args.get('period_end'):
-            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'), request.args.get('period_end'),)
+            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
+                                                    request.args.get('period_end'), )
             query = db.session.query(Traffic.winterSpeed, Traffic.summerSpeed, Traffic.numberOfVehicles,
                                      Traffic.averageSpeed, Traffic.id, Traffic.date) \
                 .filter(Traffic.id.in_(decoded_values[0])) \
@@ -72,7 +87,8 @@ def traffic_intensity():
                 .filter(Traffic.date <= decoded_values[2]).all()
             pp.pprint(type(decoded_values))
         else:
-            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'), request.args.get('period_end'),)
+            decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
+                                                    request.args.get('period_end'), )
             query = db.session.query(Traffic.winterSpeed, Traffic.summerSpeed, Traffic.numberOfVehicles,
                                      Traffic.averageSpeed, Traffic.id, Traffic.date) \
                 .filter(Traffic.id.in_(decoded_values[0])) \

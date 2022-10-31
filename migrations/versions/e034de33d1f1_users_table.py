@@ -1,8 +1,8 @@
 """users table
 
-Revision ID: b8efbb0eef09
+Revision ID: e034de33d1f1
 Revises: 
-Create Date: 2022-10-30 14:03:51.180517
+Create Date: 2022-10-31 19:00:11.939125
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b8efbb0eef09'
+revision = 'e034de33d1f1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,9 +51,7 @@ def upgrade():
     op.create_table('weather',
     sa.Column('weather_auto_id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('id', sa.Integer(), nullable=True),
-    sa.Column('surinkimo_data_unix', sa.Integer(), nullable=True),
-    sa.Column('matomumas', sa.Integer(), nullable=True),
-    sa.Column('kilometras', sa.REAL(), nullable=True),
+    sa.Column('surinkimo_data', sa.DateTime(), nullable=True),
     sa.Column('oro_temperatura', sa.REAL(), nullable=True),
     sa.Column('vejo_greitis_vidut', sa.REAL(), nullable=True),
     sa.Column('krituliu_kiekis', sa.REAL(), nullable=True),
@@ -61,10 +59,6 @@ def upgrade():
     sa.Column('rasos_taskas', sa.REAL(), nullable=True),
     sa.Column('vejo_greitis_maks', sa.REAL(), nullable=True),
     sa.Column('sukibimo_koeficientas', sa.REAL(), nullable=True),
-    sa.Column('ilguma', sa.REAL(), nullable=True),
-    sa.Column('platuma', sa.REAL(), nullable=True),
-    sa.Column('lat', sa.REAL(), nullable=True),
-    sa.Column('lng', sa.REAL(), nullable=True),
     sa.Column('konstrukcijos_temp_007', sa.REAL(), nullable=True),
     sa.Column('konstrukcijos_temp_020', sa.REAL(), nullable=True),
     sa.Column('konstrukcijos_temp_050', sa.REAL(), nullable=True),
@@ -74,14 +68,6 @@ def upgrade():
     sa.Column('konstrukcijos_temp_140', sa.REAL(), nullable=True),
     sa.Column('konstrukcijos_temp_170', sa.REAL(), nullable=True),
     sa.Column('konstrukcijos_temp_200', sa.REAL(), nullable=True),
-    sa.Column('kelio_danga', sa.String(length=140), nullable=True),
-    sa.Column('uzsalimo_taskas', sa.String(length=64), nullable=True),
-    sa.Column('vejo_kryptis', sa.String(length=64), nullable=True),
-    sa.Column('surinkimo_data', sa.DateTime(), nullable=True),
-    sa.Column('irenginys', sa.String(length=140), nullable=True),
-    sa.Column('numeris', sa.String(length=140), nullable=True),
-    sa.Column('pavadinimas', sa.String(length=140), nullable=True),
-    sa.Column('krituliu_tipas', sa.String(length=140), nullable=True),
     sa.Column('pavadinimas_perspejimas', sa.String(length=140), nullable=True),
     sa.Column('kodas', sa.String(length=140), nullable=True),
     sa.Column('batchId', sa.Integer(), nullable=True),

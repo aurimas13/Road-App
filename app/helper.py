@@ -1,4 +1,6 @@
 import urllib
+
+import pytz
 import requests
 from urllib import parse
 from flask import request
@@ -16,14 +18,31 @@ def fetch_data(url):
     return response.json()
 
 
+def change_date_to_utc(date):
+    """
+    Method to convert time  to UTC time.
+
+    :param date: string
+    :return: datetime.datetime
+    """
+
+    local_timezone = pytz.timezone("Europe/Vilnius")
+    result_date = datetime.strptime(date, '%Y-%m-%d %H:%M')
+    local_date = local_timezone.localize(result_date)
+    utc_date = local_date.astimezone(pytz.utc)
+    return utc_date
+
+
 def decode_periods_and_ids(idx, period_from, period_until=None):
     """
+    Method to decode parameters from API request and convert them to readable values.
 
     :param idx: list of tuples
     :param period_from: datetime.datetime
     :param period_until: datetime.datetime
     :return: tuple
     """
+
     decoded_period_start = urllib.parse.unquote(period_from)
     period_start = datetime.strptime(decoded_period_start, '%Y-%m-%d %X')
     decoded_period_end = urllib.parse.unquote(request.args.get('period_end')) if period_until is not None else None
@@ -52,6 +71,32 @@ def extract_weather_data(query, period_from, period_until):
                 'oro_temperatura_cnt': 0,
                 'vejo_greitis': 0,
                 'vejo_greitis_cnt': 0,
+                'vejo_greitis_maks': 0,
+                'vejo_greitis_maks_cnt': 0,
+                'krituliu_kiekis': 0,
+                'krituliu_kiekis_cnt': 0,
+                'rasos_taskas': 0,
+                'rasos_taskas_cnt': 0,
+                'sukibimo_koeficientas': 0,
+                'sukibimo_koeficientas_cnt': 0,
+                'konstrukcijos_temp_007': 0,
+                'konstrukcijos_temp_007_cnt': 0,
+                'konstrukcijos_temp_020': 0,
+                'konstrukcijos_temp_020_cnt': 0,
+                'konstrukcijos_temp_050': 0,
+                'konstrukcijos_temp_050_cnt': 0,
+                'konstrukcijos_temp_080': 0,
+                'konstrukcijos_temp_080_cnt': 0,
+                'konstrukcijos_temp_110': 0,
+                'konstrukcijos_temp_110_cnt': 0,
+                'konstrukcijos_temp_130': 0,
+                'konstrukcijos_temp_130_cnt': 0,
+                'konstrukcijos_temp_140': 0,
+                'konstrukcijos_temp_140_cnt': 0,
+                'konstrukcijos_temp_170': 0,
+                'konstrukcijos_temp_170_cnt': 0,
+                'konstrukcijos_temp_200': 0,
+                'konstrukcijos_temp_200_cnt': 0,
             }
 
         dangos_temperatura = row['dangos_temperatura']
@@ -69,6 +114,71 @@ def extract_weather_data(query, period_from, period_until):
             result_dict[row['id']]['vejo_greitis'] += vejo_greitis
             result_dict[row['id']]['vejo_greitis_cnt'] += 1
 
+        vejo_greitis_maks = row["vejo_greitis_maks"]
+        if vejo_greitis_maks:
+            result_dict[row['id']]['vejo_greitis_maks'] += vejo_greitis_maks
+            result_dict[row['id']]['vejo_greitis_maks_cnt'] += 1
+
+        krituliu_kiekis = row["krituliu_kiekis"]
+        if krituliu_kiekis:
+            result_dict[row['id']]['krituliu_kiekis'] += krituliu_kiekis
+            result_dict[row['id']]['krituliu_kiekis_cnt'] += 1
+
+        rasos_taskas = row["rasos_taskas"]
+        if rasos_taskas:
+            result_dict[row['id']]['rasos_taskas'] += rasos_taskas
+            result_dict[row['id']]['rasos_taskas_cnt'] += 1
+
+        sukibimo_koeficientas = row["sukibimo_koeficientas"]
+        if sukibimo_koeficientas:
+            result_dict[row['id']]['sukibimo_koeficientas'] += sukibimo_koeficientas
+            result_dict[row['id']]['sukibimo_koeficientas_cnt'] += 1
+
+        konstrukcijos_temp_007 = row["konstrukcijos_temp_007"]
+        if konstrukcijos_temp_007:
+            result_dict[row['id']]['konstrukcijos_temp_007'] += konstrukcijos_temp_007
+            result_dict[row['id']]['konstrukcijos_temp_007_cnt'] += 1
+
+        konstrukcijos_temp_020 = row["konstrukcijos_temp_020"]
+        if konstrukcijos_temp_020:
+            result_dict[row['id']]['konstrukcijos_temp_020'] += konstrukcijos_temp_020
+            result_dict[row['id']]['konstrukcijos_temp_020_cnt'] += 1
+
+        konstrukcijos_temp_050 = row["konstrukcijos_temp_050"]
+        if konstrukcijos_temp_050:
+            result_dict[row['id']]['konstrukcijos_temp_050'] += konstrukcijos_temp_050
+            result_dict[row['id']]['konstrukcijos_temp_050_cnt'] += 1
+
+        konstrukcijos_temp_080 = row["konstrukcijos_temp_080"]
+        if konstrukcijos_temp_080:
+            result_dict[row['id']]['konstrukcijos_temp_080'] += konstrukcijos_temp_080
+            result_dict[row['id']]['konstrukcijos_temp_080_cnt'] += 1
+
+        konstrukcijos_temp_110 = row["konstrukcijos_temp_110"]
+        if konstrukcijos_temp_110:
+            result_dict[row['id']]['konstrukcijos_temp_110'] += konstrukcijos_temp_110
+            result_dict[row['id']]['konstrukcijos_temp_110_cnt'] += 1
+
+        konstrukcijos_temp_130 = row["konstrukcijos_temp_130"]
+        if konstrukcijos_temp_130:
+            result_dict[row['id']]['konstrukcijos_temp_130'] += konstrukcijos_temp_130
+            result_dict[row['id']]['konstrukcijos_temp_130_cnt'] += 1
+
+        konstrukcijos_temp_140 = row["konstrukcijos_temp_140"]
+        if konstrukcijos_temp_140:
+            result_dict[row['id']]['konstrukcijos_temp_140'] += konstrukcijos_temp_140
+            result_dict[row['id']]['konstrukcijos_temp_140_cnt'] += 1
+
+        konstrukcijos_temp_170 = row["konstrukcijos_temp_170"]
+        if konstrukcijos_temp_170:
+            result_dict[row['id']]['konstrukcijos_temp_170'] += konstrukcijos_temp_170
+            result_dict[row['id']]['konstrukcijos_temp_170_cnt'] += 1
+
+        konstrukcijos_temp_200 = row["konstrukcijos_temp_200"]
+        if konstrukcijos_temp_200:
+            result_dict[row['id']]['konstrukcijos_temp_200'] += konstrukcijos_temp_200
+            result_dict[row['id']]['konstrukcijos_temp_200_cnt'] += 1
+
     response_ls = []
 
     for key in result_dict:
@@ -78,12 +188,50 @@ def extract_weather_data(query, period_from, period_until):
             'period_start': period_from,
             'period_end': period_until,
             'statistics': {
-                'dangos_temperatura_avg': float("{:.1f}".format(item['dangos_temperatura'] / item['dangos_temperatura_cnt'])) \
+                'dangos_temperatura_avg': float(
+                    "{:.1f}".format(item['dangos_temperatura'] / item['dangos_temperatura_cnt'])) \
                     if item['dangos_temperatura_cnt'] != 0 else 0,
                 'oro_temperatura_avg': float("{:.1f}".format(item['oro_temperatura'] / item['oro_temperatura_cnt'])) \
                     if item['oro_temperatura_cnt'] != 0 else 0,
                 'vejo_greitis_avg': float("{:.1f}".format(item['vejo_greitis'] / item['vejo_greitis_cnt'])) \
                     if item['vejo_greitis_cnt'] != 0 else 0,
+                'vejo_greitis_maks_avg': float(
+                    "{:.1f}".format(item['vejo_greitis_maks'] / item['vejo_greitis_maks_cnt'])) \
+                    if item['vejo_greitis_maks_cnt'] != 0 else 0,
+                'krituliu_kiekis_avg': float("{:.1f}".format(item['krituliu_kiekis'] / item['krituliu_kiekis_cnt'])) \
+                    if item['krituliu_kiekis_cnt'] != 0 else 0,
+                'rasos_taskas': float("{:.1f}".format(item['rasos_taskas'] / item['rasos_taskas_cnt'])) \
+                    if item['rasos_taskas_cnt'] != 0 else 0,
+                'sukibimo_koeficientas': float(
+                    "{:.1f}".format(item['sukibimo_koeficientas'] / item['sukibimo_koeficientas_cnt'])) \
+                    if item['sukibimo_koeficientas_cnt'] != 0 else 0,
+                'konstrukcijos_temp_007_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_007'] / item['konstrukcijos_temp_007_cnt'])) \
+                    if item['konstrukcijos_temp_007_cnt'] != 0 else 0,
+                'konstrukcijos_temp_020_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_020'] / item['konstrukcijos_temp_020_cnt'])) \
+                    if item['konstrukcijos_temp_020_cnt'] != 0 else 0,
+                'konstrukcijos_temp_050_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_050'] / item['konstrukcijos_temp_050_cnt'])) \
+                    if item['konstrukcijos_temp_050_cnt'] != 0 else 0,
+                'konstrukcijos_temp_080_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_080'] / item['konstrukcijos_temp_080_cnt'])) \
+                    if item['konstrukcijos_temp_080_cnt'] != 0 else 0,
+                'konstrukcijos_temp_110_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_110'] / item['konstrukcijos_temp_110_cnt'])) \
+                    if item['konstrukcijos_temp_110_cnt'] != 0 else 0,
+                'konstrukcijos_temp_130_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_130'] / item['konstrukcijos_temp_130_cnt'])) \
+                    if item['konstrukcijos_temp_130_cnt'] != 0 else 0,
+                'konstrukcijos_temp_140_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_140'] / item['konstrukcijos_temp_140_cnt'])) \
+                    if item['konstrukcijos_temp_140_cnt'] != 0 else 0,
+                'konstrukcijos_temp_170_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_170'] / item['konstrukcijos_temp_170_cnt'])) \
+                    if item['konstrukcijos_temp_170_cnt'] != 0 else 0,
+                'konstrukcijos_temp_200_avg': float(
+                    "{:.1f}".format(item['konstrukcijos_temp_200'] / item['konstrukcijos_temp_200_cnt'])) \
+                    if item['konstrukcijos_temp_200_cnt'] != 0 else 0,
             }
         }
         response_ls.append(resp_per_id)
