@@ -2,7 +2,6 @@ from app import db
 
 
 class Weather(db.Model):
-
     """    Weather Conditions Schema    """
     weather_auto_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id = db.Column(db.Integer, nullable=True)
@@ -46,7 +45,6 @@ class Weather(db.Model):
 
 
 class Traffic(db.Model):
-
     """     Traffic Intensity Schema     """
     traffic_auto_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id = db.Column(db.Integer, nullable=True)
@@ -75,7 +73,6 @@ class Traffic(db.Model):
 
 
 class BatchUpdate(db.Model):
-
     """     BatchUpdate Schema     """
     batchId = db.Column(db.Integer, primary_key=True, autoincrement=True)
     batchUpdateDate = db.Column(db.DateTime, nullable=False)

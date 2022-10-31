@@ -1,10 +1,9 @@
 from datetime import datetime
 import pytz
-
 import requests
 from app import app, db
 from app.models import Weather, Traffic, BatchUpdate
-from src.data_validation import WeatherValidate, TrafficValidate
+from app.data_validation import WeatherValidate, TrafficValidate
 from pprint import PrettyPrinter
 
 pp = PrettyPrinter()

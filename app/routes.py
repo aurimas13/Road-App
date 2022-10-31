@@ -1,21 +1,15 @@
-import itertools
 import os
-
-import werkzeug
-import sys
+import urllib
+from datetime import datetime
+from urllib import parse
 from app.models import Weather, Traffic, BatchUpdate
-from flask import render_template, flash, redirect, url_for, request, Response, jsonify
+from flask import request, Response
 from app import app, db
 from pprint import PrettyPrinter
-from itertools import groupby
-from operator import itemgetter
-
-from sqlalchemy.sql import func
-import json
-import urllib.parse
+from app.validate import validate_input
+from marshmallow import ValidationError
 
 pp = PrettyPrinter()
-from fetch import *
 
 APP_BASE_URL = os.getenv("APP_BASE_URL")
 PORT = os.getenv("PORT")
@@ -25,12 +19,19 @@ PORT = os.getenv("PORT")
 @app.route('/weather_conditions', methods=['POST', 'GET'])
 def weather_conditions():
     """
-    This is the method to show metrics of weather temperature, road temperature, wind speed,
-    visibility of the road for a given period in a road of an id or ids.
+    This is the method to show metrics of weather temperature, road temperature, wind speed of
+    the road for a given period iand id or ids.
     """
     if request.method == 'GET':
 
-        weather_link = 'http://127.0.0.1:5000/weather_conditions?ids=310,308,363,1208&period_start=2022-10-30%252012:00:00'
+        try:
+            validate_input(request.url)
+        except ValidationError:
+            return Response(
+                "Bad request was sent",
+                status=400,
+            )
+
         decoded_date_start = urllib.parse.unquote(request.args.get('period_start'))
         period_start = datetime.strptime(decoded_date_start, '%Y-%m-%d %X')
         id_list = request.args.get('ids').split(',')
@@ -92,7 +93,7 @@ def weather_conditions():
                 }
             }
             response_ls.append(resp_per_id)
-        print(response_ls)
+
         return response_ls
 
 

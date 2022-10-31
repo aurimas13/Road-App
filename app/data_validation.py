@@ -1,4 +1,5 @@
 from marshmallow import *
+from marshmallow import validate
 
 
 class Perspejimai(Schema):
@@ -72,3 +73,8 @@ class BatchValidate(Schema):
     baltchId = fields.Integer(required=True, allow_none=False)
     batchUpdateDate = fields.Str(required=True, allow_none=True)
 
+
+class RequestValidate(Schema):
+    ids = fields.Str(required=True, allow_none=False, validate=validate.Regexp(r"^[0-9]+(?:,[0-9]+)*$"))
+    period_start = fields.Str(required=True, allow_none=False)
+    period_end = fields.Str(required=False, allow_none=True)
