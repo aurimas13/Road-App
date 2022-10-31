@@ -17,4 +17,4 @@ DONE 14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
 17. Reikia isskaidyti i mazas funkcijas kad butu lengviau skaityti
 18. Unit testus ir pahandle'inti jei nesiuncia inputu API request'o kai jie siuncia malformed request (nera period_start pvz)
 DONE 19. Marshmallow validuoti errom handle'ininmu ar siuncia tesingus duomenis is API requesto pries duodant reponse
-20. Perkelti viska i app folderi is src nes ten arba src turi buti viskas
+DONE 20. Perkelti viska i app folderi is src nes ten arba src turi buti viskas
