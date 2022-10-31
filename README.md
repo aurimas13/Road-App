@@ -7,3 +7,5 @@ The product owner of the roads information aggregation system has asked you to:
 4. Create two endpoints (weather conditions and traffic intensity) that can be used for
 sharing aggregated information with other companies
 Aggregated information, that the product owner wants services to return are averages of numeric metrics (metrics that are changing, like weather temperature, wind speed, number of vehicles, etc.) for a given period. So API endpoints should accept the id (or multiple ids) of the device and the period for which to calculate the averages.
+
+
