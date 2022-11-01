@@ -18,6 +18,7 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Navigation](#navigation)
+- [Visualisation](#visualisation)
 - [Docker](#docker)
 - [Cron Job](#cron-job)
 - [Tests](#tests)
@@ -65,12 +66,20 @@ like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
 or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *2<sup>nd</sup> step* 
 and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>rd</sup> step*
 5. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
-`http://127.0.0.1:5000/weather_conditions?ids=381,&period_start=2022-10-30%252011:00:00` or `http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00` or 
-`http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252011:00:00`.
+`http://127.0.0.1:5000/weather_conditions?ids=1222&period_start=2022-10-30%252011:00:00` or 
+`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00` or 
+`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00`.
 6. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
-`http://127.0.0.1:5000/traffic_intensity?ids=1545&period_start=2022-10-30%252012:00:00` or
-`http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00` or
-`http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252016:55:00`.
+`http://127.0.0.1:5000/traffic_intensity?ids=27,3585&period_start=2022-10-30%252012:00:00&` or
+`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&` or
+`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00`.
+
+# Visualisation
+
+To see the visual outputs as shown below use Chrome, download 
+[this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc) for the browser
+and in settings select theme Default(Dark):
+
 
 # Docker
 

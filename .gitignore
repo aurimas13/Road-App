@@ -9,4 +9,4 @@ app.db
 test.db
 .idea
 .DS_Store
-public/photos/.DS_Store
+public/images/.DS_Store
