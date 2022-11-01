@@ -2,7 +2,6 @@ import urllib
 
 import pytz
 import requests
-from urllib import parse
 from flask import request
 from datetime import datetime
 

@@ -1,10 +1,14 @@
 import os
-from app.models import Weather, Traffic
+import json
+
 from flask import request, Response
+from marshmallow import ValidationError
+
+from app.models import Weather, Traffic
 from app import app, db
 from app.data_validation import validate_input
 from app.helper import decode_periods_and_ids, extract_weather_data, extract_traffic_data
-from marshmallow import ValidationError
+
 
 APP_BASE_URL = os.getenv("APP_BASE_URL")
 PORT = os.getenv("PORT")
@@ -25,7 +29,7 @@ def weather_conditions():
             validate_input(request.url)
         except ValidationError:
             return Response(
-                "Your request URL has invalid parameters",
+                json.dumps({"error": "Your request URL has invalid parameters"}),
                 status=400,
             )
 
@@ -74,7 +78,7 @@ def traffic_intensity():
             validate_input(request.url)
         except ValidationError:
             return Response(
-                "Your request URL has invalid parameters",
+                json.dumps({"error": "Your request URL has invalid parameters"}),
                 status=400,
             )
 

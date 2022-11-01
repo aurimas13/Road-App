@@ -3,6 +3,11 @@ import unittest
 
 
 def test_check_weather_endpoint_one_result(test_client):
+    """
+    GIVEN weather_conditions is queried
+    WHEN a request with valid parameters matches one record in database
+    THEN we expect a valid response with averages calculated
+    """
     expected_response = [{
         'id': 363,
         'period_start': 'Sun, 30 Oct 2022 12:00:00 GMT',
@@ -33,6 +38,11 @@ def test_check_weather_endpoint_one_result(test_client):
 
 
 def test_check_weather_endpoint_multiple_results(test_client):
+    """
+    GIVEN weather_conditions is queried
+    WHEN a request with valid parameters matches multiple records in database
+    THEN we expect a valid response with averages calculated
+    """
     expected_response = [{
         'id': 363,
         'period_start': 'Sun, 30 Oct 2022 11:00:00 GMT',
@@ -63,13 +73,23 @@ def test_check_weather_endpoint_multiple_results(test_client):
 
 
 def test_check_weather_endpoint_invalid(test_client):
+    """
+    GIVEN weather_conditions is queried
+    WHEN a request with invalid parameters to weather_conditions endpoint
+    THEN we expect a validation error
+    """
     response = test_client.get("/weather_conditions?ids=363&period_end=2022-11-01%252011:00:00")
     assert response.status_code == 400
-    assert response.data.decode('utf-8') == "Your request URL has invalid parameters"
+    assert response.data.decode('utf-8') == json.dumps({"error": "Your request URL has invalid parameters"})
     assert response.request.path == "/weather_conditions"
 
 
 def test_check_traffic_endpoint_one_results(test_client):
+    """
+    GIVEN traffic_intensity is queried
+    WHEN a request with valid parameters matches one record in database
+    THEN we expect a valid response with averages calculated
+    """
     expected_response = [{
         'id': 3611,
         'period_start': 'Sun, 30 Oct 2022 12:00:00 GMT',
@@ -88,6 +108,11 @@ def test_check_traffic_endpoint_one_results(test_client):
 
 
 def test_check_traffic_endpoint_multiple_results(test_client):
+    """
+    GIVEN traffic_intensity is queried
+    WHEN a request with valid parameters matches multiple records in database
+    THEN we expect a valid response with averages calculated
+    """
     expected_response = [{
         'id': 3611,
         'period_start': 'Sun, 30 Oct 2022 12:00:00 GMT',
@@ -106,9 +131,14 @@ def test_check_traffic_endpoint_multiple_results(test_client):
 
 
 def test_check_traffic_endpoint_invalid(test_client):
+    """
+    GIVEN traffic_intensity is queried
+    WHEN a request with invalid parameters to traffic_intensity endpoint
+    THEN we expect a validation error
+    """
     response = test_client.get("/traffic_intensity?period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252011:00:00")
     assert response.status_code == 400
-    assert response.data.decode('utf-8') == "Your request URL has invalid parameters"
+    assert response.data.decode('utf-8') == json.dumps({"error": "Your request URL has invalid parameters"})
     assert response.request.path == "/traffic_intensity"
 
 
