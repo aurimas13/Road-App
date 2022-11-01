@@ -80,7 +80,7 @@ Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navi
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
-  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
+  <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
 </p>
 
 - Example of averages from weather conditions for multiple IDs
