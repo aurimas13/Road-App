@@ -8,13 +8,13 @@ DONE 7. Read about pull data from real time API (look for the best)
 DONE 8. Create and use Docker
 DONE 9-10. Creat job that is running each hour which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
 DONE 9-10. Create a script for cronjob that queries real-time APIs
-11. Create/Update README
-DONE 12. Basically you'll have programs with two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
-DONE 13. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
-DONE 14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
-DONE 15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc) CRON JOB
-To DO TO IMRPOVE 16. Dirbk su SQLite pirma ir sukurus viska veikiancio tada pabandyk implementuoti ir MySQL.
-DONE 17. Reikia isskaidyti i mazas funkcijas kad butu lengviau skaityti
-DONE 18. Unit testus ir pahandle'inti jei nesiuncia inputu API request'o kai jie siuncia malformed request (nera period_start pvz)
-DONE 19. Marshmallow validuoti errom handle'ininmu ar siuncia tesingus duomenis is API requesto pries duodant reponse
-DONE 20. Perkelti viska i app folderi is src nes ten arba src turi buti viskas
+DONE 11. Basically programs will have two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
+DONE 12. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
+DONE 13. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
+DONE 14. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc) CRON JOB
+DONE 15. Reikia isskaidyti i mazas funkcijas kad butu lengviau skaityti
+DONE 16. Unit testus ir pahandle'inti jei nesiuncia inputu API request'o kai jie siuncia malformed request (nera period_start pvz)
+DONE 17. Marshmallow validuoti errom handle'ininmu ar siuncia tesingus duomenis is API requesto pries duodant reponse
+DONE 18. Perkelti viska i app folderi is src nes ten arba src turi buti viskas
+19. Create/Update README
+To DO TO IMRPOVE 20. Implement MySQL instead of SQLite
