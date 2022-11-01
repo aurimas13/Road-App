@@ -50,7 +50,7 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 # Navigation
 
 When you run flask you will have a localhost name on terminal like `Running on http://127.0.0.1:5000`. 
-Make note of the localhost. While usinmg Docker it may be `0.0.0.0`.
+Make note of the localhost. While using Docker it may be `0.0.0.0`.
 Afterwards fetch data and make the endpoints return what you want by following these steps:
 
 1. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
