@@ -76,7 +76,7 @@ date to ingest from is stored in the **batch_update** table. The diagram of the 
 
 <INSERT IMAGE>
 
-# Api Documentation
+# API Documentation
 
 When you run flask you will have a localhost name on terminal like `Running on http://127.0.0.1:5000`. 
 Make note of the localhost. While using Docker it may be `0.0.0.0`.
