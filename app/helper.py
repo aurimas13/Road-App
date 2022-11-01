@@ -51,6 +51,55 @@ def decode_periods_and_ids(idx, period_from, period_until=None):
     return id_list, period_start, period_end
 
 
+def extract_traffic_data(query, period_from, period_until):
+    """
+    Method to extract traffic intensity numerical information per query.
+
+    :param query: list
+    :param period_from: datetime.datetime
+    :param period_until: datetime.datetime
+    :return: list of dictionaries or dictionary
+    """
+    result_dict = {}
+
+    for row in query:
+        if row['id'] not in result_dict:
+            result_dict[row['id']] = {
+                'averageSpeed': 0,
+                'averageSpeed_cnt': 0,
+                'numberOfVehicles': 0,
+                'numberOfVehicles_cnt': 0,
+            }
+
+        averageSpeed = row['averageSpeed']
+        if averageSpeed:
+            result_dict[row['id']]['averageSpeed'] += averageSpeed
+            result_dict[row['id']]['averageSpeed_cnt'] += 1
+
+        numberOfVehicles = row["numberOfVehicles"]
+        if numberOfVehicles:
+            result_dict[row['id']]['numberOfVehicles'] += numberOfVehicles
+            result_dict[row['id']]['numberOfVehicles_cnt'] += 1
+
+    response_ls = []
+    for key in result_dict:
+        item = result_dict[key]
+        resp_per_id = {
+            'id': key,
+            'period_start': period_from,
+            'period_end': period_until,
+            'statistics': {
+                'averageSpeed_avg': float("{:.1f}".format(item['averageSpeed'] / item['averageSpeed_cnt'])) \
+                    if item['averageSpeed_cnt'] != 0 else 0,
+                'numberOfVehicles_avg': float("{:.1f}".format(item['numberOfVehicles'] / item['numberOfVehicles_cnt'])) \
+                    if item['numberOfVehicles_cnt'] != 0 else 0,
+            }
+        }
+        response_ls.append(resp_per_id)
+
+    return response_ls
+
+
 def extract_weather_data(query, period_from, period_until):
     """
     Method to extract weather condition numerical information per query.
@@ -69,8 +118,8 @@ def extract_weather_data(query, period_from, period_until):
                 'dangos_temperatura_cnt': 0,
                 'oro_temperatura': 0,
                 'oro_temperatura_cnt': 0,
-                'vejo_greitis': 0,
-                'vejo_greitis_cnt': 0,
+                'vejo_greitis_vidut': 0,
+                'vejo_greitis_vidut_cnt': 0,
                 'vejo_greitis_maks': 0,
                 'vejo_greitis_maks_cnt': 0,
                 'krituliu_kiekis': 0,
@@ -109,10 +158,10 @@ def extract_weather_data(query, period_from, period_until):
             result_dict[row['id']]['oro_temperatura'] += oro_temperatura
             result_dict[row['id']]['oro_temperatura_cnt'] += 1
 
-        vejo_greitis = row["vejo_greitis_vidut"]
-        if vejo_greitis:
-            result_dict[row['id']]['vejo_greitis'] += vejo_greitis
-            result_dict[row['id']]['vejo_greitis_cnt'] += 1
+        vejo_greitis_vidut = row["vejo_greitis_vidut"]
+        if vejo_greitis_vidut:
+            result_dict[row['id']]['vejo_greitis_vidut'] += vejo_greitis_vidut
+            result_dict[row['id']]['vejo_greitis_vidut_cnt'] += 1
 
         vejo_greitis_maks = row["vejo_greitis_maks"]
         if vejo_greitis_maks:
@@ -193,8 +242,9 @@ def extract_weather_data(query, period_from, period_until):
                     if item['dangos_temperatura_cnt'] != 0 else 0,
                 'oro_temperatura_avg': float("{:.1f}".format(item['oro_temperatura'] / item['oro_temperatura_cnt'])) \
                     if item['oro_temperatura_cnt'] != 0 else 0,
-                'vejo_greitis_avg': float("{:.1f}".format(item['vejo_greitis'] / item['vejo_greitis_cnt'])) \
-                    if item['vejo_greitis_cnt'] != 0 else 0,
+                'vejo_greitis_vidut_avg': float(
+                    "{:.1f}".format(item['vejo_greitis_vidut'] / item['vejo_greitis_vidut_cnt'])) \
+                    if item['vejo_greitis_vidut_cnt'] != 0 else 0,
                 'vejo_greitis_maks_avg': float(
                     "{:.1f}".format(item['vejo_greitis_maks'] / item['vejo_greitis_maks_cnt'])) \
                     if item['vejo_greitis_maks_cnt'] != 0 else 0,
@@ -232,55 +282,6 @@ def extract_weather_data(query, period_from, period_until):
                 'konstrukcijos_temp_200_avg': float(
                     "{:.1f}".format(item['konstrukcijos_temp_200'] / item['konstrukcijos_temp_200_cnt'])) \
                     if item['konstrukcijos_temp_200_cnt'] != 0 else 0,
-            }
-        }
-        response_ls.append(resp_per_id)
-
-    return response_ls
-
-
-def extract_traffic_data(query, period_from, period_until):
-    """
-    Method to extract traffic intensity numerical information per query.
-
-    :param query: list
-    :param period_from: datetime.datetime
-    :param period_until: datetime.datetime
-    :return: list of dictionaries or dictionary
-    """
-    result_dict = {}
-
-    for row in query:
-        if row['id'] not in result_dict:
-            result_dict[row['id']] = {
-                'averageSpeed': 0,
-                'averageSpeed_cnt': 0,
-                'numberOfVehicles': 0,
-                'numberOfVehicles_cnt': 0,
-            }
-
-        averageSpeed = row['averageSpeed']
-        if averageSpeed:
-            result_dict[row['id']]['averageSpeed'] += averageSpeed
-            result_dict[row['id']]['averageSpeed_cnt'] += 1
-
-        numberOfVehicles = row["numberOfVehicles"]
-        if numberOfVehicles:
-            result_dict[row['id']]['numberOfVehicles'] += numberOfVehicles
-            result_dict[row['id']]['numberOfVehicles_cnt'] += 1
-
-    response_ls = []
-    for key in result_dict:
-        item = result_dict[key]
-        resp_per_id = {
-            'id': key,
-            'period_start': period_from,
-            'period_end': period_until,
-            'statistics': {
-                'averageSpeed_avg': float("{:.1f}".format(item['averageSpeed'] / item['averageSpeed_cnt'])) \
-                    if item['averageSpeed_cnt'] != 0 else 0,
-                'numberOfVehicles_avg': float("{:.1f}".format(item['numberOfVehicles'] / item['numberOfVehicles_cnt'])) \
-                    if item['numberOfVehicles_cnt'] != 0 else 0,
             }
         }
         response_ls.append(resp_per_id)
