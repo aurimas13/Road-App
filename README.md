@@ -96,7 +96,7 @@ Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navi
 <sup>1 - to get the same visualisations use Chrome, download 
 [this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
 and in extension settings select theme: Default(Dark).
-</sup)
+</sup>
 # Docker
 
 To build & run docker do these commands: 
