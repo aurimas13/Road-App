@@ -56,22 +56,24 @@ Afterwards fetch data and make the endpoints return what you want by following t
 1. Fetch data from API of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
 and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database by running `python fetch.py` 
 at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
-2. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
-SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=381`
-or multiple like `ids=381,404,1222`
-3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date until
-like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
+2. Look into the SQLite database to identify ids you wish to get the averages of through `sqlite3 app.db` by running basic
+SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
+or multiple like `ids=308,310,388,1222&`.
+3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date end
+like `period_end=2022-11-01%252019:00:00` where `%2520` is simply a space.
 4. Specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
-or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *2<sup>nd</sup> step* 
-and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>rd</sup> step*
+or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to the ids as specified in *2<sup>nd</sup> step* 
+and **<period_start>** with **<period_end>** refer to the period specified in *3<sup>rd</sup> step*.
 5. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
 `http://127.0.0.1:5000/weather_conditions?ids=1222&period_start=2022-10-30%252011:00:00` or 
 `http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00` or 
-`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00`.
+`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00` 
+and the output returned by API could look like [this](#usage).
 6. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
 `http://127.0.0.1:5000/traffic_intensity?ids=27,3585&period_start=2022-10-30%252012:00:00&` or
 `http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&` or
-`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00`.
+`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00`
+and the output returned by API could look like [this](#usage).
 
 # Output
 
