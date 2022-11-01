@@ -15,15 +15,17 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 
 # Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Usage](#usage)
-- [API Documentation](#api-documentation)
+- [Data](#data)
+- [Api Documentation](#api-documentation)
 - [Output](#output)
 - [Docker](#docker)
 - [Cron Job](#cron-job)
 - [Tests](#tests)
 - [Public](#public)
-- [Logo](#photo)
+- [Logo](#logo)
 - [License](#license)
 - [Citation](#citation)
 
@@ -36,46 +38,81 @@ For proper usage of the program you might need to run **python3** rather than pr
 
 # Usage
 
-After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
+After the requirements are met, the app package is set at your directory and terminal. First, to create the database (SQLite for now), run:
 ```
->>> pip install -r requirements.txt
 >>> flask db upgrade 
+```
+
+Then you populate the database with some data using `fetch.py`
+
+```
+>>> python fetch.py
+```
+
+Then to enable users to run the Flask API, you can run
+
+```
 >>> flask run
 ```
 
-To look at the functionalities of the app refer to [API Documentation](#api-documentation).
+To look at the functionalities of data ingestion refer to [Data](#data), and for the API refer to [API Documentation](#api-documentation).
 
-# API Documentation
+# Data
+
+- Fetch data from API of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
+and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database by running `python fetch.py` 
+at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
+
+- Look into the SQLite database to identify vehicle ids as ids that you wish to get the averages of through `sqlite3 app.db` 
+by running basic SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
+or multiple like `ids=308,310,388,1222&` in the query used for the API (further documentation in [API documentation](#api-documentation))
+
+The way the ingestion works is that we will ingest only the latest data that was not ingested in a previous batch. The way to determine the
+date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
+
+<INSERT IMAGE>
+
+# Api Documentation
 
 When you run flask you will have a localhost name on terminal like `Running on http://127.0.0.1:5000`. 
 Make note of the localhost. While using Docker it may be `0.0.0.0`.
-Afterwards fetch data and make the endpoints return what you want by following these steps:
+The API endpoints that can be used are:
 
-1. Fetch data from API of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
-and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database by running `python fetch.py` 
-at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
-2. Look into the SQLite database to identify vehicle ids as ids that you wish to get the averages of through `sqlite3 app.db` 
-by running basic SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
-or multiple like `ids=308,310,388,1222&`.
-3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date end
-like `period_end=2022-11-01%252019:00:00` where `%2520` is simply a space.
-4. Specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
-or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to the ids as specified in *2<sup>nd</sup> step* 
-and **<period_start>** with **<period_end>** refer to the period specified in *3<sup>rd</sup> step*.
-5. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
-`http://127.0.0.1:5000/weather_conditions?ids=1222&period_start=2022-10-30%252011:00:00` or 
-`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00` or 
-`http://127.0.0.1:5000/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00` 
-and the output returned by API could look like [this](#usage).
-6. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
-`http://127.0.0.1:5000/traffic_intensity?ids=27,3585&period_start=2022-10-30%252012:00:00&` or
-`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&` or
-`http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00`
-and the output returned by API could look like [this](#usage).
+```GET /weather_conditions```
+
+This endpoint will return the average numerical metrics for a time period of weather conditions. More visual information about it is [here](#output).
+
+Query Parameters:
+ids (required) - this is the list of vehicle ids you want to query
+period_start (required) - this is the start date you want to get the average numerical metrics from
+period_end (optional) - this is the end date you want to get the average numerical metrics until
+
+Example queries:
+```
+/weather_conditions?ids=1222&period_start=2022-10-30%252011:00:00
+/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00
+/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00
+```
+
+```GET /traffic_intensity```
+This endpoint will return the average numerical metrics for a time period of traffic intensity. More visual information about it is [here](#output).
+
+Query Parameters:
+ids (required) - this is the list of vehicle ids you want to query
+period_start (required) - this is the start date you want to get the average numerical metrics from
+period_end (optional) - this is the end date you want to get the average numerical metrics until
+
+Example queries:
+```
+/traffic_intensity?ids=27,3585&period_start=2022-10-30%252012:00:00
+/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00
+/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00
+```
+
 
 # Output
 
-The visual outputs after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>2</sup>
+The visual outputs after you follow [Usage](#usage) and [Api Documentation](#api-documentation) steps:<sup>2</sup>
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
@@ -101,9 +138,12 @@ The visual outputs after you follow [Usage](#usage) and [Navigation](#navigation
 # Docker
 
 To build & run docker do these commands: 
-`docker build -t roadapp .` & `docker run --name roadapp_docker -p 5000:5000 roadapp`
+```
+>>> docker build -t roadapp .
+>>> docker run --name roadapp_docker -p 5000:5000 roadapp
+```
 
-To run the app then go and follow what is said at [Navigation](#navigation).
+To run the app then go and follow what is said at [API Documentation](#api-documentation).
 
 # Cron Job
 
@@ -114,7 +154,7 @@ Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
 # Tests
 
-By navigating to the program/app folder where it is extracted - [RoadApp](https://github.com/aurimas13/RoadApp) - one folder before where test folder is held one can run these test commands:
+To run the test, run the following"
 
 1) To run model tests in the project folder run:
 ```
@@ -132,7 +172,7 @@ By navigating to the program/app folder where it is extracted - [RoadApp](https:
 
 # Public
 
-Public folder contains [todolist text file](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) and a Logo folder.
+Public folder contains [todolist text file](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) and an Images folder.
 
 # Logo
 
