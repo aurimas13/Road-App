@@ -39,8 +39,6 @@ For proper usage of the program you might need to run **python3** rather than pr
 After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
 ```
 >>> pip install -r requirements.txt
->>> flask db init 
->>> flask db migrate -m "users table"`
 >>> flask db upgrade 
 >>> flask run
 ```
