@@ -7,8 +7,6 @@ src/__pycache__
 # Databases and other files
 app.db
 test.db
-tracker.log*
 .idea
 .DS_Store
 public/photos/.DS_Store
-
