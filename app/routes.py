@@ -15,7 +15,14 @@ PORT = os.getenv("PORT")
 
 
 @app.route('/', methods=['GET'])
-@app.route('/weather_conditions', methods=['POST', 'GET'])
+def default():
+    return Response(
+        json.dumps({"message": "Use one of the two endpoints: weather_conditions or traffic intensity to get results!"}),
+        status=200,
+    )
+
+
+@app.route('/weather_conditions', methods=['GET'])
 def weather_conditions():
     """
     This is the method to show metrics of weather temperature, road temperature, wind speed of
