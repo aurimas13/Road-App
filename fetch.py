@@ -5,9 +5,6 @@ from app.models import Weather, Traffic, BatchUpdate
 from app.data_validation import WeatherValidate, TrafficValidate
 from app.helper import fetch_data, change_date_to_utc
 from datetime import datetime
-from pprint import PrettyPrinter
-
-pp = PrettyPrinter()
 
 # Define variables
 URL_WEATHER_DATABASE = os.getenv("URL_WEATHER_DATABASE")
