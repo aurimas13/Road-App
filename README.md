@@ -1,5 +1,5 @@
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/logo/road_vehicle.jpg"/>
+  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/road_vehicle.jpg"/>
 </p>
 
 <p align="center" > <b> Road Analysis App </b> </p>
@@ -90,7 +90,7 @@ Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navi
 
 - Example of averages from traffic intensities for multiple IDs
 <p align=center>
-  <img height="300px" src="hhttps://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
+  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
 </p>
 
 <sup>1 - to get the same visualisations use Chrome, download 
