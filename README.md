@@ -171,7 +171,8 @@ To run the test, run the following"
 
 # Public
 
-Public folder contains [todolist](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) text file and [images](https://github.com/aurimas13/RoadApp/tree/main/public/images) folder.
+Public folder contains [todolist](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) text file and
+[images](https://github.com/aurimas13/RoadApp/tree/main/public/images) folder.
 
 # Logo
 
