@@ -76,11 +76,27 @@ and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>
 
 # Visualisation
 
-To see the visual outputs as shown below use Chrome, download 
-[this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc) for the browser
-and in settings select theme Default(Dark):
+Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>1</sup>
 
+- Example of averages from weather conditions for individual ID
+<p align=center>
+  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
+</p>
 
+- Example of averages from weather conditions for multiple IDs
+<p align=center>
+  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_multiple.png"/>
+</p>
+
+- Example of averages from traffic intensities for multiple IDs
+<p align=center>
+  <img height="300px" src="hhttps://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
+</p>
+
+<sup>1 - to get the same visualisations use Chrome, download 
+[this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
+and in extension settings select theme: Default(Dark).
+</sup)
 # Docker
 
 To build & run docker do these commands: 
