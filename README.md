@@ -65,7 +65,7 @@ at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to 
 
 - Look into the SQLite database to identify vehicle ids as ids that you wish to get the averages of through `sqlite3 app.db` 
 by running basic SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
-or multiple like `ids=308,310,388,1222&` in the query used for the API (further documentation in [API documentation](#api-documentation))
+or multiple like `ids=308,310,388,1222&` in the query used for the API (further documentation in [API Documentation](#api-documentation))
 
 The way the ingestion works is that we will ingest only the latest data that was not ingested in a previous batch. The way to determine the
 date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
@@ -171,7 +171,7 @@ To run the test, run the following"
 
 # Public
 
-Public folder contains [todolist text file](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) and an Images folder.
+Public folder contains [todolist](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) text file and [images](https://github.com/aurimas13/RoadApp/tree/main/public/images) folder.
 
 # Logo
 
