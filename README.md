@@ -50,7 +50,7 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 
 Steps:
 
-1. Run `flask run` on the terminal.
+1. Run `flask run` on the terminal and make note of the localhost from `Running on http://127.0.0.1:5000.
 2. Create the SQLite database by running `flask db init`, `flask db migrate -m "users table"` and `flask db upgrade`.
 3. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
 and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. 
@@ -60,7 +60,7 @@ SQL command like `select * from weather` or `select * from traffic` and record e
 or multiple like `ids=381,404,1222`
 5. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally until
 like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
-6. 'Navigating to **http://localhost:5000/weather_conditions** or **http://localhost:5000//traffic_intensity** will return a BAD request
+6. 'Navigating to **http://127.0.0.1:5000/weather_conditions** or **http://127.0.0.1:5000/traffic_intensity** will return a BAD request
 as we need to specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
 or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *4<sup>th</sup> step* 
 and **<period_start>** with **<period_end>** refer to dates specified in *5<sup>th</sup> step*
