@@ -18,7 +18,7 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Navigation](#navigation)
-- [Visualisation](#visualisation)
+- [Output](#output)
 - [Docker](#docker)
 - [Cron Job](#cron-job)
 - [Tests](#tests)
@@ -73,7 +73,7 @@ and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>
 `http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&` or
 `http://127.0.0.1:5000/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00`.
 
-# Visualisation
+# Output
 
 Nice visual outputs after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>2</sup>
 
@@ -139,7 +139,7 @@ The MIT [LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
 # Citation
 
 <br><sup>1 - **python** or **python3** depends on the way how you installed python of version 3.* on your machine. </sup></br>
-<sup>2 - to get the same visualisations use Chrome, download 
+<sup>2 - to get the same visualisations of the output use Chrome, download 
 [this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
 and in extension settings select theme: Default(Dark).
 </sup>
