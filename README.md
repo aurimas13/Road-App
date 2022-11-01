@@ -85,7 +85,7 @@ The visual outputs after you follow [Usage](#usage) and [Navigation](#navigation
 - 
 - Example of averages from traffic intensities for individual ID
 <p align=center>
-  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_solo.png"/>
+  <img height="400px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_solo.png"/>
 </p>
 
 - Example of averages from weather conditions for multiple IDs
