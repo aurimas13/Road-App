@@ -119,3 +119,4 @@ The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp
 # License
 
 The MIT [LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
+
