@@ -81,9 +81,8 @@ To run the app then go and follow what is said at [Navigation](#navigation).
 
 # Cron Job
 
-To build cron job in mac terminal run `crontab -e` while to fetch data each hour, 
-the syntax of cronjob could look like this: `0 * * * * cd <directory_to_app> && <directory_to_python> fetch.py`.
-
+To build cron job run `crontab -e` while to fetch data each hour, 
+the syntax could look like this: `0 * * * * cd <directory_to_app> && <directory_to_python> fetch.py`.
 
 Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
