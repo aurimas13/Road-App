@@ -40,6 +40,8 @@ For proper usage of the program you might need to run **python3** rather than pr
 After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
 ```
 >>> pip install -r requirements.txt
+>>> flask db init 
+>>> flask db migrate -m "users table"`
 >>> flask db upgrade 
 >>> flask run
 ```
@@ -48,26 +50,26 @@ To look at the functionalities of the app refer to [Navigation](#navigation).
 
 # Navigation
 
-Steps:
+When you run flask you will have a localhost name on terminal like `Running on http://127.0.0.1:5000`. 
+Make note of the localhost. While usinmg Docker it may be `0.0.0.0`.
+Afterwards fetch data and make the endpoints return what you want by following these steps:
 
-1. Run `flask run` on the terminal and make note of the localhost from `Running on http://127.0.0.1:5000.
-2. Create the SQLite database by running `flask db init`, `flask db migrate -m "users table"` and `flask db upgrade`.
-3. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
+1. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
 and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. by running `python fetch.py` 
 at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
-4. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
+2. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
 SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=381`
 or multiple like `ids=381,404,1222`
-5. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally until
+3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date until
 like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
-6. 'Navigating to **http://127.0.0.1:5000/weather_conditions** or **http://127.0.0.1:5000/traffic_intensity** will return a BAD request
+4. 'Navigating to **http://127.0.0.1:5000/weather_conditions** or **http://127.0.0.1:5000/traffic_intensity** will return a BAD request
 as we need to specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
-or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *4<sup>th</sup> step* 
-and **<period_start>** with **<period_end>** refer to dates specified in *5<sup>th</sup> step*
-7. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
+or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *2<sup>nd</sup> step* 
+and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>rd</sup> step*
+5. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
 `http://127.0.0.1:5000/weather_conditions?ids=381,&period_start=2022-10-30%252011:00:00` or `http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00` or 
 `http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252011:00:00`.
-8. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
+6. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
 `http://127.0.0.1:5000/traffic_intensity?ids=1545&period_start=2022-10-30%252012:00:00&` or
 `http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&` or
 `http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252016:55:00`.
@@ -92,7 +94,7 @@ Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
 # Tests
 
-By navigating to the program/app folder where it is extracted - [RoadApp](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
+By navigating to the program/app folder where it is extracted - [RoadApp](https://github.com/aurimas13/RoadApp) - one folder before where test folder is held one can run these test commands:
 
 1) To run model tests in the project folder run:
 ```
@@ -112,12 +114,10 @@ By navigating to the program/app folder where it is extracted - [RoadApp](https:
 
 Public folder contains [todolist text file](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) and a Logo folder.
 
-[//]: # (- [task.pdf]&#40;https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/task.pdf&#41; - the problem for which this program was implemented.)
-
 # Logo
 
 The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp/blob/main/public/logo/road_vehicle.jpg).
 
 # License
 
-The MIT [LICENSE](https://github.com/aurimas13/Tracker/blob/main/LICENSE)
+The MIT [LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
