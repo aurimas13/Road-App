@@ -12,7 +12,7 @@ def add_data_fixtures():
     fixture_weather = Weather(
         id=363,
         surinkimo_data=datetime.strptime('2022-10-31 16:56:00.000000', '%Y-%m-%d %X.%f'),
-        dangos_temperatura = 7.6,
+        dangos_temperatura=7.6,
         oro_temperatura=5.9,
         krituliu_kiekis=0.5,
         rasos_taskas=2.7,
@@ -34,7 +34,7 @@ def add_data_fixtures():
     fixture_weather_2 = Weather(
         id=363,
         surinkimo_data=datetime.strptime('2022-10-30 11:59:00.000000', '%Y-%m-%d %X.%f'),
-        dangos_temperatura = None,
+        dangos_temperatura=None,
         oro_temperatura=6.9,
         krituliu_kiekis=1.0,
         rasos_taskas=2.9,
@@ -85,14 +85,14 @@ def add_data_fixtures():
         x=55.8328,
         y=60.7856,
         timeInterval=15,
-        date=datetime.strptime('2022-10-30 11:59:00.000000', '%Y-%m-%d %X.%f'),
+        date=datetime.strptime('2022-10-31 11:59:00.000000', '%Y-%m-%d %X.%f'),
         direction='negative',
         startX=558328.3,
         startY=6068565.02,
         endX=568328.3,
         endY=6078565.02,
-        winterSpeed=70,
-        summerSpeed=90,
+        winterSpeed=60,
+        summerSpeed=80,
         trafficType='normal',
     )
 

@@ -121,6 +121,8 @@ def extract_traffic_data(query, period_from, period_until):
     :return: list of dictionaries or dictionary
     """
     keys = [
+        'summerSpeed',
+        'winterSpeed',
         'averageSpeed',
         'numberOfVehicles'
     ]

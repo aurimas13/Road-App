@@ -73,14 +73,17 @@ def test_check_traffic_endpoint_one_results(test_client):
     expected_response = [{
         'id': 3611,
         'period_start': 'Sun, 30 Oct 2022 12:00:00 GMT',
-        'period_end': 'Tue, 1 Nov 2022 11:00:00 GMT',
+        'period_end': 'Mon, 31 Oct 2022 16:55:00 GMT',
         'statistics': {
+            'winterSpeed_avg': 60.0,
+            'summerSpeed_avg': 80.0,
             'averageSpeed_avg': 106.3,
-            'numberOfVehicles_avg': 72
+            'numberOfVehicles_avg': 72.0
         }
     }]
     response = test_client.get("/traffic_intensity?ids=3611&period_start=2022-10-30%252012:00:00&period_end=2022-10-31%252016:55:00")
     assert response.status_code == 200
+    assert json.loads(response.data.decode('utf-8')) == expected_response
     assert response.request.path == "/traffic_intensity"
 
 
@@ -88,14 +91,17 @@ def test_check_traffic_endpoint_multiple_results(test_client):
     expected_response = [{
         'id': 3611,
         'period_start': 'Sun, 30 Oct 2022 12:00:00 GMT',
-        'period_end': 'Tue, 1 Nov 2022 11:00:00 GMT',
+        'period_end': 'Tue, 01 Nov 2022 11:00:00 GMT',
         'statistics': {
+            'winterSpeed_avg': 65.0,
+            'summerSpeed_avg': 85.0,
             'averageSpeed_avg': 95.2,
-            'numberOfVehicles_avg': 71
+            'numberOfVehicles_avg': 71.0
         }
     }]
     response = test_client.get("/traffic_intensity?ids=3611&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252011:00:00")
     assert response.status_code == 200
+    assert json.loads(response.data.decode('utf-8')) == expected_response
     assert response.request.path == "/traffic_intensity"
 
 

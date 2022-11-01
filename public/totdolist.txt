@@ -5,15 +5,15 @@ DONE 4. API endpoints should acccept the id or multiple ids of the device and th
 DONE 5. Accepting ids and the period for a given period
 DONE 6. Think of a mechanism to store data from real time API's in a database
 DONE 7. Read about pull data from real time API (look for the best)
-8. Create and use Docker
-9-10. Creat job that is running ~10 mins which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
-9-10. Create a script for cronjob that queries real-time APIs
-11. Update README
+DONE 8. Create and use Docker
+DONE 9-10. Creat job that is running each hour which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
+DONE 9-10. Create a script for cronjob that queries real-time APIs
+11. Create/Update README
 DONE 12. Basically you'll have programs with two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
 DONE 13. Reikia duoemnu bazes i ka storinti ir duomenu modelio (pora lenteliu) kaip matosi
 DONE 14. Make a data nodel (pasidaryk duomenu modeli kuri reikia)
-15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc) CRON JOB
-16. Dirbk su SQLite pirma ir sukurus viska veikiancio tada pabandyk implementuoti ir MySQL.
+DONE 15. Sukurti script'a paziureti kaip daznai jie ikelia juos (reikia checkpoint'a tureti kaip paskutinis ikelimas buvo vakar, etc) CRON JOB
+To DO TO IMRPOVE 16. Dirbk su SQLite pirma ir sukurus viska veikiancio tada pabandyk implementuoti ir MySQL.
 DONE 17. Reikia isskaidyti i mazas funkcijas kad butu lengviau skaityti
 DONE 18. Unit testus ir pahandle'inti jei nesiuncia inputu API request'o kai jie siuncia malformed request (nera period_start pvz)
 DONE 19. Marshmallow validuoti errom handle'ininmu ar siuncia tesingus duomenis is API requesto pries duodant reponse
