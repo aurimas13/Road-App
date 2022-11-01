@@ -41,7 +41,6 @@ class WeatherValidate(Schema):
     kelio_danga = fields.Str(required=False, allow_none=True)
     uzsalimo_taskas = fields.Str(required=False, allow_none=True)
     vejo_kryptis = fields.Str(required=False, allow_none=True)
-    surinkimo_data = fields.Str(required=False, allow_none=True)
     irenginys = fields.Str(required=False, allow_none=True)
     numeris = fields.Str(required=False, allow_none=True)
     pavadinimas = fields.Str(required=False, allow_none=True)
