@@ -86,10 +86,7 @@ To build cron job in mac terminal run:
 >>> crontab -e
 ```
 
-The syntax for cronjob when entering terminal could look like this:<sup>1,2,</sup> `0 6 * * * cd <directory_to_app> && <directory_to_python> fetch.py`
-
-<br><sup>1</sup> **<directory_to_app>** - should be the directory where RoadApp folder is like ~/Documents/Python/RoadApp </br>
-<br><sup>2</sup> **<directory_to_python>** should be where you installed python on your machine like ~/opt/miniconda3/envs/RoadApp/bin/python </br>
+The syntax for cronjob when entering terminal could look like this: `0 6 * * * cd <directory_to_app> && <directory_to_python> fetch.py`
 
 Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
