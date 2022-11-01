@@ -118,4 +118,3 @@ def test_client():
         app.db.drop_all()
 
         ctx.pop()
-
