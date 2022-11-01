@@ -71,7 +71,7 @@ The way the ingestion works is that we will ingest only the latest data that was
 date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
 
 <p align=center>
-  <img height="400px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/ingestion-logic.jpg"/>
+  <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/ingestion-logic.jpg"/>
 </p>
 
 <INSERT IMAGE>
