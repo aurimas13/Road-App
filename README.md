@@ -80,17 +80,17 @@ Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navi
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
+  <img height="400px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
 </p>
 
 - Example of averages from weather conditions for multiple IDs
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_multiple.png"/>
+  <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_multiple.png"/>
 </p>
 
 - Example of averages from traffic intensities for multiple IDs
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
+  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
 </p>
 
 <sup>1 - to get the same visualisations use Chrome, download 
