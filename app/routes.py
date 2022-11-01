@@ -6,8 +6,6 @@ from app.data_validation import validate_input
 from app.helper import decode_periods_and_ids, extract_weather_data, extract_traffic_data
 from marshmallow import ValidationError
 
-pp = PrettyPrinter()
-
 APP_BASE_URL = os.getenv("APP_BASE_URL")
 PORT = os.getenv("PORT")
 
