@@ -17,7 +17,7 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 
 - [Requirements](#requirements)
 - [Usage](#usage)
-- [Navigation](#navigation)
+- [API Documentation](#api-documentation)
 - [Output](#output)
 - [Docker](#docker)
 - [Cron Job](#cron-job)
@@ -43,9 +43,9 @@ After the requirements are met, the app package is set at your directory and ter
 >>> flask run
 ```
 
-To look at the functionalities of the app refer to [Navigation](#navigation).
+To look at the functionalities of the app refer to [API Documentation](#api-documentation).
 
-# Navigation
+# API Documentation
 
 When you run flask you will have a localhost name on terminal like `Running on http://127.0.0.1:5000`. 
 Make note of the localhost. While using Docker it may be `0.0.0.0`.
