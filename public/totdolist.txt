@@ -14,4 +14,5 @@ DONE 13. Make small function from big ones
 DONE 14. Make tests
 DONE 15. Include Marshmallow for validations
 Done 16. Create/Update README
-NICE TO DO TO IMRPOVE 17. Implement MySQL instead of SQLite
+17. Make defaults for http://127.0.0.1:5000/traffic_intensity and http://127.0.0.1:5000/weather_condition and http://127.0.0.1:5000/
+NICE TO DO TO IMRPOVE 18. Implement MySQL instead of SQLite
