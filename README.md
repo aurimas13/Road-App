@@ -33,7 +33,7 @@ To install the necessary libraries run [requirements.txt](https://github.com/aur
 
 For proper usage of the program you might need to run **python3** rather than proposed **python**.<sup>1</sup>
 
-<br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
+<br><sup>1 - **python** or **python3** depends on the way how you installed python of version 3.* on your machine. </sup></br>
 
 # Usage
 
