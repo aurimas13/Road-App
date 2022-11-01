@@ -53,8 +53,8 @@ Steps:
 1. Run `flask run` on the terminal and make note of the localhost from `Running on http://127.0.0.1:5000.
 2. Create the SQLite database by running `flask db init`, `flask db migrate -m "users table"` and `flask db upgrade`.
 3. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
-and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. 
-To do that run `python fetch.py` at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make data be fetched regularly.
+and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. by running `python fetch.py` 
+at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
 4. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
 SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=381`
 or multiple like `ids=381,404,1222`
@@ -75,47 +75,52 @@ and **<period_start>** with **<period_end>** refer to dates specified in *5<sup>
 # Docker
 
 To build & run docker do these commands: 
-`docker build -t tracker .` & `docker run --name tracker_docker -p 5000:5000 tracker`
+`docker build -t roadapp .` & `docker run --name roadapp_docker -p 5000:5000 roadapp`
 
-To run the app ten got and follow what is said at [Navigation](#navigation).
+To run the app then go and follow what is said at [Navigation](#navigation).
+
+# Cron Job
+
+To build cron job in mac terminal run:
+``` 
+>>> crontab -e
+```
+
+The syntax for cronjob when entering terminal could look like this:<sup>1,2,</sup> `0 6 * * * cd <directory_to_app> && <directory_to_python> fetch.py`
+
+<br><sup>1</sup> **<directory_to_app>** - should be the directory where RoadApp folder is like ~/Documents/Python/RoadApp </br>
+<br><sup>2</sup> **<directory_to_python>** should be where you installed python on your machine like ~/opt/miniconda3/envs/RoadApp/bin/python </br>
+
+Syntax customization for Cron Job can be checked [here](https://crontab.guru/).
 
 # Tests
 
-By navigating to the program/app folder where it is extracted - [Tracker](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
+By navigating to the program/app folder where it is extracted - [RoadApp](https://github.com/aurimas13/Tracker) - one folder before where test folder is held one can run these test commands:
 
-1) To run unit tests in the project folder run:
+1) To run model tests in the project folder run:
 ```
->>> python -m pytest test/unit/test.py
+>>> python -m pytest test/test_models.py
 
 ```
 
 2) To run functional tests in the project folder run:
 ```
->>> python -m pytest test/functional/test.py
+>>> python -m pytest test/test_functional.py
 
 ```
 
-3) Or run it with `pytest test/functional/test.py` or `pytest test/unit/test.py`
+3) Or run it with `pytest test/test_functional.py` or `pytest test/test_models.py`
 
 # Public
 
-Public folder contains [todolist text file](https://github.com/aurimas13/Tracker/blob/main/public/todolist.txt) and a Logo folder.
+Public folder contains [todolist text file](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) and a Logo folder.
 
 [//]: # (- [task.pdf]&#40;https://github.com/aurimas13/BirthdayReminderApp/blob/main/Public/task.pdf&#41; - the problem for which this program was implemented.)
 
 # Logo
 
-The logo of the Time Tracker can be found [here](https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png).
+The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp/blob/main/public/logo/road_vehicle.jpg).
 
 # License
 
 The MIT [LICENSE](https://github.com/aurimas13/Tracker/blob/main/LICENSE)
-The app
-
-RoadApp (To be updated)
-crontab -e (create) only one?
-crontab -r (remove)
-crontab -l (list)
-
-CRONTAB: 0 * * * * cd ~/Documents/Python/RoadApp && ~/opt/miniconda3/envs/RoadApp/bin/python fetch.py
->>> 0 * * * * cd <directory_to_app> && <directory_to_python>  fetch.py
