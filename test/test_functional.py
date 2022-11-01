@@ -65,7 +65,7 @@ def test_check_weather_endpoint_multiple_results(test_client):
 def test_check_weather_endpoint_invalid(test_client):
     response = test_client.get("/weather_conditions?ids=363&period_end=2022-11-01%252011:00:00")
     assert response.status_code == 400
-    assert response.data.decode('utf-8') == "Bad request was sent"
+    assert response.data.decode('utf-8') == "Your request URL has invalid parameters"
     assert response.request.path == "/weather_conditions"
 
 
@@ -108,7 +108,7 @@ def test_check_traffic_endpoint_multiple_results(test_client):
 def test_check_traffic_endpoint_invalid(test_client):
     response = test_client.get("/traffic_intensity?period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252011:00:00")
     assert response.status_code == 400
-    assert response.data.decode('utf-8') == "Bad request was sent"
+    assert response.data.decode('utf-8') == "Your request URL has invalid parameters"
     assert response.request.path == "/traffic_intensity"
 
 

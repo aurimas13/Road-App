@@ -1,5 +1,5 @@
 import os
-from app.models import Weather, Traffic, BatchUpdate
+from app.models import Weather, Traffic
 from flask import request, Response
 from app import app, db
 from pprint import PrettyPrinter
@@ -28,7 +28,7 @@ def weather_conditions():
             validate_input(request.url)
         except ValidationError:
             return Response(
-                "Bad request was sent",
+                "Your request URL has invalid parameters",
                 status=400,
             )
 
@@ -61,7 +61,6 @@ def weather_conditions():
                 .filter(Weather.surinkimo_data >= decoded_values[1]).all()
 
         weather_conditions_gotten_data = extract_weather_data(query, decoded_values[1], decoded_values[2])
-        print(type(weather_conditions_gotten_data))
         return weather_conditions_gotten_data
 
 
@@ -78,7 +77,7 @@ def traffic_intensity():
             validate_input(request.url)
         except ValidationError:
             return Response(
-                "Bad request was sent",
+                "Your request URL has invalid parameters",
                 status=400,
             )
 
@@ -90,7 +89,6 @@ def traffic_intensity():
                 .filter(Traffic.id.in_(decoded_values[0])) \
                 .filter(Traffic.date >= decoded_values[1]) \
                 .filter(Traffic.date <= decoded_values[2]).all()
-            pp.pprint(type(decoded_values))
         else:
             decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
                                                     request.args.get('period_end'), )
