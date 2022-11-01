@@ -91,10 +91,10 @@ def get_response_values(data, attributes, period_from, period_until):
     """
     response_ls = []
 
-    for key in data:
-        item = data[key]
+    for pointer in data:
+        item = data[pointer]
         resp_per_id = {
-            'id': key,
+            'id': pointer,
             'period_start': period_from,
             'period_end': period_until,
             'statistics': {}
