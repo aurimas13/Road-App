@@ -1,26 +1,26 @@
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/Tracker/blob/main/public/logo/time_tracker.png"/>
+  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/logo/road_vehicle.jpg"/>
 </p>
 
 <p align="center" > <b> Time Tracker </b> </p>
 <br>
 <p align=center>
-  <a href="https://github.com/aurimas13/Tracker/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
+  <a href="https://github.com/aurimas13/RoadApp/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
   <a href="https://twitter.com/aurimasnausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/aurimasnausedas?style=social"/></a>
 </p>
 
-The app tracks the time of stories and tasks. Details of the usage are under [Usage](#usage).
-Please refer to [Requirements](#requirements) for importing required libraries before looking at how to use it.
+The app looks into the API request data of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
+and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) from Lithuanian roads, then analyses it and returns the averages of numerical values.
+Details of the usage are under [Usage](#usage). Please refer to [Requirements](#requirements) for importing required libraries before looking at how to use it.
 
 # Table of contents
-
-[//]: # (- [Birthday Reminder App]&#40;#birthday-reminder-app&#41;)
 
 - [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Navigation](#navigation)
 - [Docker](#docker)
+- [Cron Job](#cron-job)
 - [Tests](#tests)
 - [Public](#public)
 - [Logo](#photo)
@@ -28,22 +28,10 @@ Please refer to [Requirements](#requirements) for importing required libraries b
 
 # Requirements
 
-
-[//]: # (`IMPORTANT NOTE:` To run the services you might need to use the virtual environment:)
-
-[//]: # (```)
-
-[//]: # (virtualenv my_env)
-
-[//]: # (source my_env/bin/activate)
-
-[//]: # (```)
-
 **Python 3.10.6** is required to properly execute package's modules, imported libraries and defined functions. 
 To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown: `pip install -r requirements.txt`.
 
 For proper usage of the program you might need to run **python3** rather than proposed **python**.<sup>1</sup>
-
 
 <br><sup>1</sup>**python** or **python3** depends on the way how you installed python of version 3.* on your machine. </br>
 
@@ -51,8 +39,6 @@ For proper usage of the program you might need to run **python3** rather than pr
 
 After the requirements are met, the app package is set at your directory and terminal is run you have to run the flask app:
 ```
->>> conda create --name tracker 
->>> conda activate tracker 
 >>> pip install -r requirements.txt
 >>> flask db upgrade 
 >>> flask run
@@ -60,13 +46,31 @@ After the requirements are met, the app package is set at your directory and ter
 
 To look at the functionalities of the app refer to [Navigation](#navigation).
 
-
 # Navigation
 
-When you run `flask run` you will have a localhost name on terminal like ` Running on http://127.0.0.1:5000`. 
-Navigating to **http://localhost:5000/** or **http://localhost:5000/story** will open the web page that at the top has four names:
-`Stories`, `Add Story`, `Add Developer`, `Developer summary` and at the bottom questions of whether you want to add a story (`Add Story`)
-or add a developer (`Add Developer`).
+Steps:
+
+1. Run `flask run` on the terminal.
+2. Create the SQLite database by running `flask db init`, `flask db migrate -m "users table"` and `flask db upgrade`.
+3. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
+and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. 
+To do that run `python fetch.py` at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make data be fetched regularly.
+4. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
+SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=381`
+or multiple like `ids=381,404,1222`
+5. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally until
+like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
+6. 'Navigating to **http://localhost:5000/weather_conditions** or **http://localhost:5000//traffic_intensity** will return a BAD request
+as we need to specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
+or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *4<sup>th</sup> step* 
+and **<period_start>** with **<period_end>** refer to dates specified in *5<sup>th</sup> step*
+7. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
+`http://127.0.0.1:5000/weather_conditions?ids=381,&period_start=2022-10-30%252011:00:00` or `http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00` or 
+`http://127.0.0.1:5000/weather_conditions?ids=381,404,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252011:00:00`.
+8. To analyse traffic intensities from [traffic API](https://eismoinfo.lt/traffic-intensity-service#) run something like this
+`http://127.0.0.1:5000/traffic_intensity?ids=1545&period_start=2022-10-30%252012:00:00&` or
+`http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&` or
+`http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252016:55:00`.
 
 When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
 
