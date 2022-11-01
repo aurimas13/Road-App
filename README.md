@@ -75,7 +75,7 @@ and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>
 
 # Visualisation
 
-Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>2</sup>
+Nice visual outputs after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>2</sup>
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
