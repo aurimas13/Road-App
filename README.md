@@ -19,7 +19,7 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Data](#data)
-- [Api Documentation](#api-documentation)
+- [API Documentation](#api-documentation)
 - [Output](#output)
 - [Docker](#docker)
 - [Cron Job](#cron-job)
@@ -70,6 +70,10 @@ or multiple like `ids=308,310,388,1222&` in the query used for the API (further 
 The way the ingestion works is that we will ingest only the latest data that was not ingested in a previous batch. The way to determine the
 date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
 
+<p align=center>
+  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/ingestion-logic.jpg"/>
+</p>
+
 <INSERT IMAGE>
 
 # Api Documentation
@@ -111,7 +115,7 @@ Example queries:
 
 # Output
 
-The visual outputs after you follow [Usage](#usage) and [Api Documentation](#api-documentation) steps:<sup>2</sup>
+The visual outputs after you follow [Usage](#usage) and [API Documentation](#api-documentation) steps:<sup>2</sup>
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
