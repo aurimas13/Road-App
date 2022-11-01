@@ -79,8 +79,7 @@ Make note of the localhost. While using Docker it may be `0.0.0.0`.
 The API endpoints that can be used are:
 
 ```GET /weather_conditions```
-
-This endpoint will return the average numerical metrics for a time period of weather conditions. More visual information about it is [here](#output).
+- this endpoint will return the average numerical metrics for a time period of weather conditions. More visual information about it is [here](#output).
 
 Query Parameters:
 ids (required) - this is the list of vehicle ids you want to query
@@ -95,7 +94,7 @@ Example queries:
 ```
 
 ```GET /traffic_intensity```
-This endpoint will return the average numerical metrics for a time period of traffic intensity. More visual information about it is [here](#output).
+- this endpoint will return the average numerical metrics for a time period of traffic intensity. More visual information about it is [here](#output).
 
 Query Parameters:
 ids (required) - this is the list of vehicle ids you want to query
