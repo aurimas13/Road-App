@@ -61,8 +61,7 @@ SQL command like `select * from weather` or `select * from traffic` and record e
 or multiple like `ids=381,404,1222`
 3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date until
 like `period_end=2022-11-01%252011:00:00` where `%25` is simply a space.
-4. 'Navigating to **http://127.0.0.1:5000/weather_conditions** or **http://127.0.0.1:5000/traffic_intensity** will return a BAD request
-as we need to specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
+4. Specify requests like `http://127.0.0.1:5000/weather_conditions?ids=<ids>&period_start=<period_start>&period_end=<period_end>`
 or `http://127.0.0.1:5000/traffic_intensity?ids=<ids>&period_start=<period_start>&period_end=<period_end>` where **<ids>** refer to ids as specified in *2<sup>nd</sup> step* 
 and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>rd</sup> step*
 5. To analyse weather conditions from [weather API](https://eismoinfo.lt/weather-conditions-service?id=%271166%27) run something like this
