@@ -72,16 +72,6 @@ and **<period_start>** with **<period_end>** refer to dates specified in *5<sup>
 `http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&` or
 `http://127.0.0.1:5000/traffic_intensity?ids=1545,2962,4214&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252016:55:00`.
 
-When you add a developer or two of them a dropdown will appear when creating or updating a task (`Add task` or`Update task`) that will allow to choose developers to be assigned to the task of the story:
-
-- After you press `See Story` you will be redirected to add tasks for it. If you wish to update a story press `Update Story`.
-- below if a story has been created or delete it by pressing `Delete Story` at the bottom.
-- When you press `See Story` you will be given an option to `Add Task` or if one exists already `Update Task`.
-Each task also has `Delete Task` button to delete a task for that story.
-- `Developer summary` gives a summary of all developers assigned to do the tasks of stories. 
-It estimates points for how long it is estimated to complete the tasks of stories while the actual time taken to 
-complete the tasks are calculated for each developer and summarised at `Developer summary`.
-
 # Docker
 
 To build & run docker do these commands: 
