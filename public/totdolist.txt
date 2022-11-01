@@ -6,7 +6,7 @@ DONE 5. Accepting ids and the period for a given period
 DONE 6. Think of a mechanism to store data from real time API's in a database
 DONE 7. Read about pull data from real time API (look for the best)
 DONE 8. Create and use Docker
-DONE 9. Creat job that is running each hour which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
+DONE 9. Create job that is running each hour which questions whether there is any new data that you ingest into your database. Otherwise you don't do anything and just go with what you have
 DONE 10. Create a script for cronjob that queries real-time APIs
 DONE 11. Basically programs will have two functionalities: a script that takes data and stores that into database and second that is an API that returns the required values to the user
 DONE 12. Make a data nodel
