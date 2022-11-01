@@ -10,5 +10,5 @@ test.db
 tracker.log*
 .idea
 .DS_Store
-public/logo/.DS_Store
+public/photos/.DS_Store
 
