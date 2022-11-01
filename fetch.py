@@ -30,7 +30,7 @@ with app.app_context():
     db.session.add(new_batch_update)
     db.session.commit()
 
-    for json_value in resp_weather[:10]:
+    for json_value in resp_weather[:50]:
 
         utc_date = change_date_to_utc(json_value["surinkimo_data"])
         if utc_date > batch_date:

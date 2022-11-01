@@ -1,12 +1,9 @@
 import os
-import urllib
-from datetime import datetime
-from urllib import parse
 from app.models import Weather, Traffic, BatchUpdate
 from flask import request, Response
 from app import app, db
 from pprint import PrettyPrinter
-from app.validate import validate_input
+from app.data_validation import validate_input
 from app.helper import decode_periods_and_ids, extract_weather_data, extract_traffic_data
 from marshmallow import ValidationError
 
@@ -77,6 +74,14 @@ def traffic_intensity():
     :return: list of dictionaries or dictionary
     """
     if request.method == 'GET':
+        try:
+            validate_input(request.url)
+        except ValidationError:
+            return Response(
+                "Bad request was sent",
+                status=400,
+            )
+
         if request.args.get('period_end'):
             decoded_values = decode_periods_and_ids(request.args.get('ids'), request.args.get('period_start'),
                                                     request.args.get('period_end'), )

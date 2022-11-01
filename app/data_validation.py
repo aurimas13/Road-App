@@ -1,5 +1,17 @@
-from marshmallow import *
-from marshmallow import validate
+from urllib import parse
+from marshmallow import ValidationError, validate, Schema, fields
+
+
+def validate_input(url):
+    request_dict = dict(
+        parse.parse_qsl(
+            parse.urlsplit(url).query
+        )
+    )
+    try:
+        RequestValidate().load(request_dict)
+    except ValidationError:
+        raise ValidationError("The query parameter sent were incorrect")
 
 
 class Perspejimai(Schema):

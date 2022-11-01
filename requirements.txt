@@ -6,7 +6,8 @@ flask-migrate==3.1.0
 pytest==7.2.0
 python-dotenv==0.21.0
 mock==4.0.3
-Werkzeug==2.2.2
+Werkzeug==2.2.2test_functional.py
+test_models.py
 requests~=2.28.1
 marshmallow~=3.18.0
 pytz~=2022.5

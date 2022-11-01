@@ -1,10 +1,7 @@
-import glob
 import unittest
 import sys
 import os
 from datetime import datetime
-
-import pytz
 
 topdir = os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(topdir)
@@ -19,7 +16,7 @@ def test_new_weather_schema():
     """
     weather = Weather(
         id=363,
-        surinkimo_data=datetime.strptime('2022-10-30 16:56:00.000000', '%Y-%m-%d %X.%f').replace(tzinfo=pytz.UTC),
+        surinkimo_data=datetime.strptime('2022-10-30 16:56:00.000000', '%Y-%m-%d %X.%f'),
         dangos_temperatura=7.6,
         oro_temperatura=5.9,
         krituliu_kiekis=0.5,
@@ -36,11 +33,11 @@ def test_new_weather_schema():
         konstrukcijos_temp_140=12.9,
         konstrukcijos_temp_170=12.6,
         konstrukcijos_temp_200=12.9,
-        pavadinimas='Drėgna',
-        kodas='A1',
+        pavadinimas_perspejimas='Drėgna',
+        kodas='A1'
     )
-    assert weather.id == 362
-    assert weather.surinkimo_data == datetime.strptime('2022-10-30 16:56:00.000000', '%Y-%m-%d %X.%f').replace(tzinfo=pytz.UTC)
+    assert weather.id == 363
+    assert weather.surinkimo_data == datetime.strptime('2022-10-30 16:56:00.000000', '%Y-%m-%d %X.%f')
     assert weather.dangos_temperatura == 7.6
     assert weather.oro_temperatura == 5.9
     assert weather.krituliu_kiekis == 0.5
@@ -57,7 +54,7 @@ def test_new_weather_schema():
     assert weather.konstrukcijos_temp_140 == 12.9
     assert weather.konstrukcijos_temp_170 == 12.6
     assert weather.konstrukcijos_temp_200 == 12.9
-    assert weather.pavadinimas == 'Drėgna'
+    assert weather.pavadinimas_perspejimas == 'Drėgna'
     assert weather.kodas == 'A1'
 
 
@@ -78,7 +75,7 @@ def test_new_traffic_schema():
         x=55.8328,
         y=60.7856,
         timeInterval=15,
-        date=datetime.strptime('2022-10-31 16:56:00.000000', '%Y-%m-%d %X.%f').replace(tzinfo=pytz.UTC),
+        date=datetime.strptime('2022-10-31 16:56:00.000000', '%Y-%m-%d %X.%f'),
         direction='negative',
         startX=558328.3,
         startY=6068565.02,
@@ -86,7 +83,7 @@ def test_new_traffic_schema():
         endY=6078565.02,
         winterSpeed=70,
         summerSpeed=90,
-        trafficType='normal',
+        trafficType='normal'
     )
     assert traffic.id == 3611
     assert traffic.averageSpeed == 84.1
@@ -98,7 +95,7 @@ def test_new_traffic_schema():
     assert traffic.x == 55.8328
     assert traffic.y == 60.7856
     assert traffic.timeInterval == 15
-    assert traffic.date == datetime.strptime('2022-10-31 16:56:00.000000', '%Y-%m-%d %X.%f').replace(tzinfo=pytz.UTC)
+    assert traffic.date == datetime.strptime('2022-10-31 16:56:00.000000', '%Y-%m-%d %X.%f')
     assert traffic.direction == 'negative'
     assert traffic.startX == 558328.3
     assert traffic.startY == 6068565.02
