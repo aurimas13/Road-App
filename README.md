@@ -25,6 +25,7 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 - [Public](#public)
 - [Logo](#photo)
 - [License](#license)
+- [Citation](#citation)
 
 # Requirements
 
@@ -32,7 +33,6 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 To install the necessary libraries run [requirements.txt](https://github.com/aurimas13/Tracker/blob/main/requirements.txt) file as shown: `pip install -r requirements.txt`.
 
 For proper usage of the program you might need to run **python3** rather than proposed **python**.<sup>1</sup>
-<br><sup>1 - **python** or **python3** depends on the way how you installed python of version 3.* on your machine. </sup></br>
 
 # Usage
 
@@ -53,8 +53,8 @@ When you run flask you will have a localhost name on terminal like `Running on h
 Make note of the localhost. While using Docker it may be `0.0.0.0`.
 Afterwards fetch data and make the endpoints return what you want by following these steps:
 
-1. Fetch data from API's of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
-and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database. by running `python fetch.py` 
+1. Fetch data from API of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
+and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database by running `python fetch.py` 
 at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
 2. Look into the SQLite database to identify ids you wish to get averages of through `sqlite3 app.db` by running basic
 SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=381`
@@ -75,7 +75,7 @@ and **<period_start>** with **<period_end>** refer to dates specified in *3<sup>
 
 # Visualisation
 
-Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>1</sup>
+Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navigation) steps:<sup>2</sup>
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
@@ -92,10 +92,6 @@ Nice visual outputs when after you follow [Usage](#usage) and [Navigation](#navi
   <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_multiple.png"/>
 </p>
 
-<sup>1 - to get the same visualisations use Chrome, download 
-[this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
-and in extension settings select theme: Default(Dark).
-</sup>
 # Docker
 
 To build & run docker do these commands: 
@@ -139,3 +135,11 @@ The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp
 # License
 
 The MIT [LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
+
+# Citation
+
+<br><sup>1 - **python** or **python3** depends on the way how you installed python of version 3.* on your machine. </sup></br>
+<sup>2 - to get the same visualisations use Chrome, download 
+[this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
+and in extension settings select theme: Default(Dark).
+</sup>
