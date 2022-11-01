@@ -2,7 +2,6 @@ import os
 from app.models import Weather, Traffic
 from flask import request, Response
 from app import app, db
-from pprint import PrettyPrinter
 from app.data_validation import validate_input
 from app.helper import decode_periods_and_ids, extract_weather_data, extract_traffic_data
 from marshmallow import ValidationError
