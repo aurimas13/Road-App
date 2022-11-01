@@ -56,8 +56,8 @@ Afterwards fetch data and make the endpoints return what you want by following t
 1. Fetch data from API of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
 and [traffic intensities](https://eismoinfo.lt/traffic-intensity-service#) to the created database by running `python fetch.py` 
 at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to make the data be fetched regularly.
-2. Look into the SQLite database to identify ids you wish to get the averages of through `sqlite3 app.db` by running basic
-SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
+2. Look into the SQLite database to identify vehicle ids as ids that you wish to get the averages of through `sqlite3 app.db` 
+by running basic SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
 or multiple like `ids=308,310,388,1222&`.
 3. Define the date you want to start from like `period_start=2022-10-30%252011:00:00` and optionally date end
 like `period_end=2022-11-01%252019:00:00` where `%2520` is simply a space.
