@@ -129,12 +129,12 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Example of averages from weather conditions for multiple IDs
 <p align=center>
-  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_3581.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_3581.png"/>
 </p>
 
 - Example of averages from traffic intensities for multiple IDs
 <p align=center>
-  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_3961.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_3961.png"/>
 </p>
 
 # Docker
