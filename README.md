@@ -94,7 +94,7 @@ Example queries:
 ```
 /weather_conditions?ids=415&period_start=2022-11-01%252012:00:00
 /weather_conditions?ids=1015,1068&period_start=2022-11-01%252012:00:00
-/weather_conditions?ids=1068,1222,2561&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252023:00:00
+/weather_conditions?ids=1068,1222,2903&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252023:00:00
 ```
 
 ```GET /traffic_intensity```
@@ -132,7 +132,7 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
   <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1015_1068.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1068_1222_2561.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1068_1222_2903.png"/>
 </p>
 
 
