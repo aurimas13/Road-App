@@ -129,18 +129,18 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Examples of averages from weather conditions for multiple IDs
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_3581.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_140.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_140.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_29_4400_3581.png"/>
 </p>
 
 - Examples of averages from traffic intensities for multiple IDs
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_3961.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_415.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_415.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_3961.png"/>
 </p>
 
 # Docker
