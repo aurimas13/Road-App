@@ -147,4 +147,3 @@ def test_check_traffic_endpoint_invalid(test_client):
 
 if __name__ == '__main__':
     unittest.main()
-
