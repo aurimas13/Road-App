@@ -49,7 +49,7 @@ Then you populate the database with some data using `fetch.py`:
 >>> python fetch.py
 ```
 
-Afterwards to enable users to run the Flask API, you can run:
+Afterwards to enable users to run the Flask API, you do that by running:
 
 ```
 >>> flask run
