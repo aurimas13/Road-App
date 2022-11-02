@@ -107,4 +107,3 @@ def traffic_intensity():
                 .filter(Traffic.date >= decoded_values[1]).all()
         traffic_intensity_gotten_data = extract_traffic_data(query, decoded_values[1], decoded_values[2])
         return traffic_intensity_gotten_data
-
