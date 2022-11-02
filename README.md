@@ -136,7 +136,9 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 <p align=center>
   <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_3961.png"/>
 </p>
-
+<p align=center>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_310_415.png"/>
+</p>
 # Docker
 
 To build & run docker do these commands: 
