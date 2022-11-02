@@ -43,13 +43,13 @@ After the requirements are met, the app package is set at your directory and ter
 >>> flask db upgrade 
 ```
 
-Then you populate the database with some data using `fetch.py`
+Then you populate the database with some data using `fetch.py`:
 
 ```
 >>> python fetch.py
 ```
 
-Then to enable users to run the Flask API, you can run
+Afterwards to enable users to run the Flask API, you can run:
 
 ```
 >>> flask run
