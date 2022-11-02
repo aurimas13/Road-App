@@ -124,7 +124,7 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Example of averages from traffic intensities for individual ID
 <p align=center>
-  <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/trafic_125.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/trafic_125.png"/>
 </p>
 
 - Example of averages from weather conditions for multiple IDs
