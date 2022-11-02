@@ -89,7 +89,7 @@ Query Parameters:
 
 **ids** (*required*) - this is the list of vehicle ids you want to query |
 **period_start** (*required*) - this is the start date you want to get the average numerical metrics from (format: ```%Y-%m-%d %X```) |
-**period_end** (optional) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
+**period_end** (*optional*) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
 
 Example queries:
 ```
@@ -102,9 +102,10 @@ Example queries:
 - this endpoint will return the average numerical metrics for a time period of traffic intensity. More visual information about it is [here](#output).
 
 Query Parameters:
-**ids** (*required*) - this is the list of vehicle ids you want to query | 
+
+<br> **ids** (*required*) - this is the list of vehicle ids you want to query | </br>
 **period_start** (*required*) - this is the start date you want to get the average numerical metrics from (format: ```%Y-%m-%d %X```) |
-**period_end** (optional) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
+**period_end** (*optional*) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
 
 Example queries:
 ```
