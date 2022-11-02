@@ -15,7 +15,6 @@ Details of the usage are under [Usage](#usage). Please refer to [Requirements](#
 
 # Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Data](#data)
