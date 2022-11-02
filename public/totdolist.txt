@@ -14,7 +14,7 @@ DONE 13. Make small function from big ones
 DONE 14. Make tests
 DONE 15. Include Marshmallow for validations
 Done 16. Create/Update README
+DONE 17. Ingest data in bulk and not row by row
 
 IMPROVEMENTS TO DO:
-1. Move to using MySQL for database
-2. Ingest data in bulk and not row by row
+- Move to using MySQL for database
