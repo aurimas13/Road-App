@@ -179,7 +179,7 @@ Public folder contains [todolist](https://github.com/aurimas13/RoadApp/blob/main
 
 # Logo
 
-The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp/blob/main/public/logo/road_vehicle.jpg).
+The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp/blob/main/public/images/road_vehicle.jpg).
 
 # License
 
