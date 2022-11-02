@@ -192,4 +192,3 @@ The MIT [LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
 [this extension](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc)
 and in extension settings select theme: Default(Dark).
 </sup>
-
