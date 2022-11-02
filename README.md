@@ -65,7 +65,7 @@ at the directory of the app or simultaneously refer to [Cron Job](#cron-job) to 
 
 - Look into the SQLite database to identify vehicle ids as ids that you wish to get the averages of through `sqlite3 app.db` 
 by running basic SQL command like `select * from weather` or `select * from traffic` and record either a single id like `ids=1222`
-or multiple like `ids=308,310,388,1222&` in the query used for the API (further documentation in [API Documentation](#api-documentation))
+or multiple like `ids=415,1015,1068,1222` in the query used for the API (further documentation in [API Documentation](#api-documentation))
 
 The way the ingestion works is that we will ingest only the latest data that was not ingested in a previous batch. The way to determine the
 date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
@@ -92,9 +92,9 @@ period_end (optional) - this is the end date you want to get the average numeric
 
 Example queries:
 ```
-/weather_conditions?ids=125&period_start=2022-11-01%252012:00:00
-/weather_conditions?ids=310,415,2582&period_start=2022-11-01%252012:00:00
-/weather_conditions?ids=310,393,3961&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252023:00:00
+/weather_conditions?ids=415&period_start=2022-11-01%252012:00:00
+/weather_conditions?ids=1015,1068&period_start=2022-11-01%252012:00:00
+/weather_conditions?ids=1068,1222,2561&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252023:00:00
 ```
 
 ```GET /traffic_intensity```
@@ -119,7 +119,7 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
-  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_125.png"/>
+  <img height="600px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_415.png"/>
 </p>
 
 - Example of averages from traffic intensities for individual ID
@@ -129,10 +129,10 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Examples of averages from weather conditions for multiple IDs
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_310_415.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1015_1068.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_310_3961.png"/>
+  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1068_1222_2561.png"/>
 </p>
 
 
