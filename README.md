@@ -92,9 +92,9 @@ period_end (optional) - this is the end date you want to get the average numeric
 
 Example queries:
 ```
-/weather_conditions?ids=1222&period_start=2022-10-30%252011:00:00
-/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00
-/weather_conditions?ids=308,310,388,1222&period_start=2022-10-30%252011:00:00&period_end=2022-11-01%252019:00:00
+/weather_conditions?ids=125&period_start=2022-11-01%252012:00:00
+/weather_conditions?ids=310,415,25821&period_start=2022-11-01%252012:00:00
+/weather_conditions?ids=310,393,3961&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252023:00:00
 ```
 
 ```GET /traffic_intensity```
@@ -107,9 +107,9 @@ period_end (optional) - this is the end date you want to get the average numeric
 
 Example queries:
 ```
-/traffic_intensity?ids=27,3585&period_start=2022-10-30%252012:00:00
-/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00
-/traffic_intensity?ids=27,140,2887,3585&period_start=2022-10-30%252012:00:00&period_end=2022-11-01%252020:00:00
+/traffic_intensity?ids=29&period_start=2022-10-30%252012:00:00
+/traffic_intensity?ids=29,140,4400&period_start=2022-11-01%252012:00:00
+/traffic_intensity?ids=29,3581,4400&period_start=2022-11-01%252012:00:00&period_end=2022-11-02%252020:00:00
 ```
 
 

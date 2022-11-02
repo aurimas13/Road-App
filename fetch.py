@@ -65,7 +65,7 @@ with app.app_context():
             )
 
             db.session.add(weather_properties)
-            db.session.commit()
+    db.session.commit()
 
     for json_value in resp_traffic:
         s1 = set()
@@ -97,4 +97,4 @@ with app.app_context():
                         trafficType=road_segment["trafficType"]
                     )
                     db.session.add(traffic_intensity)
-                    db.session.commit()
+    db.session.commit()
