@@ -91,3 +91,4 @@ class RequestValidate(Schema):
                                                                 validate.Length(min=1)])
     period_start = fields.DateTime(required=True, allow_none=False, format='%Y-%m-%d %X')
     period_end = fields.DateTime(required=False, allow_none=True, format='%Y-%m-%d %X')
+
