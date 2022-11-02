@@ -87,8 +87,8 @@ The API endpoints that can be used are:
 
 Query Parameters:
 ids (required) - this is the list of vehicle ids you want to query
-period_start (required) - this is the start date you want to get the average numerical metrics from
-period_end (optional) - this is the end date you want to get the average numerical metrics until
+period_start (required) - this is the start date you want to get the average numerical metrics from (format: ```%Y-%m-%d %X```)
+period_end (optional) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
 
 Example queries:
 ```
@@ -102,8 +102,8 @@ Example queries:
 
 Query Parameters:
 ids (required) - this is the list of vehicle ids you want to query
-period_start (required) - this is the start date you want to get the average numerical metrics from
-period_end (optional) - this is the end date you want to get the average numerical metrics until
+period_start (required) - this is the start date you want to get the average numerical metrics from (format: ```%Y-%m-%d %X```)
+period_end (optional) - this is the end date you want to get the average numerical metrics until (format: ```%Y-%m-%d %X```)
 
 Example queries:
 ```
@@ -122,7 +122,6 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
   <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_solo.png"/>
 </p>
 
-- 
 - Example of averages from traffic intensities for individual ID
 <p align=center>
   <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_solo.png"/>

@@ -9,7 +9,6 @@ from app import app, db
 from app.data_validation import validate_input
 from app.helper import decode_periods_and_ids, extract_weather_data, extract_traffic_data
 
-
 APP_BASE_URL = os.getenv("APP_BASE_URL")
 PORT = os.getenv("PORT")
 
@@ -17,7 +16,8 @@ PORT = os.getenv("PORT")
 @app.route('/', methods=['GET'])
 def default():
     return Response(
-        json.dumps({"message": "Use one of the two endpoints: weather_conditions or traffic intensity to get results!"}),
+        json.dumps(
+            {"message": "Use one of the two endpoints: weather_conditions or traffic intensity to get results!"}),
         status=200,
     )
 
@@ -34,9 +34,9 @@ def weather_conditions():
 
         try:
             validate_input(request.url)
-        except ValidationError:
+        except ValidationError as e:
             return Response(
-                json.dumps({"error": "Your request URL has invalid parameters"}),
+                json.dumps({"error": f"Your request URL has invalid parameters - {e}"}),
                 status=400,
             )
 
@@ -81,11 +81,12 @@ def traffic_intensity():
     :return: list of dictionaries or dictionary
     """
     if request.method == 'GET':
+
         try:
             validate_input(request.url)
-        except ValidationError:
+        except ValidationError as e:
             return Response(
-                json.dumps({"error": "Your request URL has invalid parameters"}),
+                json.dumps({"error": f"Your request URL has invalid parameters - {e}"}),
                 status=400,
             )
 

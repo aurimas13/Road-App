@@ -1,17 +1,17 @@
+import json
 from urllib import parse
+
+from flask import Response
 from marshmallow import ValidationError, validate, Schema, fields
 
 
 def validate_input(url):
     request_dict = dict(
         parse.parse_qsl(
-            parse.urlsplit(url).query
+            parse.urlsplit(parse.unquote(url)).query
         )
     )
-    try:
-        RequestValidate().load(request_dict)
-    except ValidationError:
-        raise ValidationError("The query parameter sent were incorrect")
+    return RequestValidate().load(request_dict)
 
 
 class Perspejimai(Schema):
@@ -87,6 +87,7 @@ class BatchValidate(Schema):
 
 
 class RequestValidate(Schema):
-    ids = fields.Str(required=True, allow_none=False, validate=validate.Regexp(r"^[0-9]+(?:,[0-9]+)*$"))
-    period_start = fields.Str(required=True, allow_none=False)
-    period_end = fields.Str(required=False, allow_none=True)
+    ids = fields.Str(required=True, allow_none=False, validate=[validate.Regexp(r"^[0-9]+(?:,[0-9]+)*$"),
+                                                                validate.Length(min=1)])
+    period_start = fields.DateTime(required=True, allow_none=False, format='%Y-%m-%d %X')
+    period_end = fields.DateTime(required=False, allow_none=True, format='%Y-%m-%d %X')
