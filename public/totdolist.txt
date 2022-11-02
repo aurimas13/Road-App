@@ -16,5 +16,5 @@ DONE 15. Include Marshmallow for validations
 DONE 16. Create/Update README
 DONE 17. Ingest data in bulk and not row by row
 
-IMPROVEMENT TO DO:
+IMPROVEMENT:
 - Move to using MySQL for database
