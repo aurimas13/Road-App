@@ -17,7 +17,7 @@ resp_traffic = fetch_data(URL_TRAFFIC_DATABASE)
 
 with app.app_context():
     result = db.session.query(BatchUpdate).order_by(
-        BatchUpdate.batchUpdateDate.desc()).first()  # Tik ideda pasikartojancias datas, kaip to isvengti?
+        BatchUpdate.batchUpdateDate.desc()).first()
     batch_date = datetime.strptime(str(result), '%Y-%m-%d %X.%f').replace(tzinfo=pytz.UTC) if result is not None else \
         datetime.strptime("1970-01-01 00:00:00", '%Y-%m-%d %X').replace(tzinfo=pytz.UTC)
 
@@ -68,7 +68,6 @@ with app.app_context():
     db.session.commit()
 
     for json_value in resp_traffic:
-        s1 = set()
         if datetime.strptime(json_value["date"], '%Y-%m-%dT%H:%M:%S.%f%z').replace(tzinfo=pytz.UTC) > batch_date:
             if json_value['roadSegments']:
                 for i in range(len(json_value['roadSegments'])):

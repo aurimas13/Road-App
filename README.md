@@ -1,12 +1,12 @@
 <p align=center>
-  <img height="300px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/road_vehicle.jpg"/>
+  <img height="300px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/road_vehicle.jpg"/>
 </p>
 
 <p align="center" > <b> Road Analysis App </b> </p>
 <br>
 <p align=center>
-  <a href="https://github.com/aurimas13/RoadApp/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
-  <a href="https://twitter.com/aurimasnausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/aurimasnausedas?style=social"/></a>
+  <a href="https://github.com/aurimas13/Road-App/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/npm/l/express"></a>
+  <a href="https://twitter.com/anausedas"><img alt="twitter" src="https://img.shields.io/twitter/follow/anausedas?style=social"/></a>
 </p>
 
 The app looks into the API request data of [weather conditions](https://eismoinfo.lt/weather-conditions-service?id=%271166%27)
@@ -70,7 +70,7 @@ The way the ingestion works is that we will ingest only the latest data that was
 date to ingest from is stored in the **batch_update** table. The diagram of the process is shown below:
 
 <p align=center>
-  <img height="500px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/ingestion-logic.jpg"/>
+  <img height="500px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/ingestion-logic.jpg"/>
 </p>
 
 <INSERT IMAGE>
@@ -120,29 +120,29 @@ The visual outputs after you follow [Usage](#usage) and [API Documentation](#api
 
 - Example of averages from weather conditions for individual ID
 <p align=center>
-  <img height="525px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_415.png"/>
+  <img height="525px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/weather_415.png"/>
 </p>
 
 - Example of averages from traffic intensities for individual ID
 <p align=center>
-  <img height="350px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_29.png"/>
+  <img height="350px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/traffic_29.png"/>
 </p>
 
 - Examples of averages from weather conditions for multiple IDs
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1015_1068.png"/>
+  <img height="700px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/weather_1015_1068.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/weather_1068_1222_2903.png"/>
+  <img height="700px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/weather_1068_1222_2903.png"/>
 </p>
 
 
 - Examples of averages from traffic intensities for multiple IDs
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_29_4400_140.png"/>
+  <img height="700px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/traffic_29_4400_140.png"/>
 </p>
 <p align=center>
-  <img height="700px" src="https://github.com/aurimas13/RoadApp/blob/main/public/images/traffic_29_4400_3581.png"/>
+  <img height="700px" src="https://github.com/aurimas13/Road-App/blob/main/public/images/traffic_29_4400_3581.png"/>
 </p>
 
 # Docker
@@ -182,16 +182,16 @@ To run the test, run the following"
 
 # Public
 
-Public folder contains [todolist](https://github.com/aurimas13/RoadApp/blob/main/public/totdolist.txt) text file and
-[images](https://github.com/aurimas13/RoadApp/tree/main/public/images) folder.
+Public folder contains [todolist](https://github.com/aurimas13/Road-App/blob/main/public/totdolist.txt) text file and
+[images](https://github.com/aurimas13/Road-App/tree/main/public/images) folder.
 
 # Logo
 
-The logo of the RoadApp can be found [here](https://github.com/aurimas13/RoadApp/blob/main/public/images/road_vehicle.jpg).
+The logo of the Road-App can be found [here](https://github.com/aurimas13/Road-App/blob/main/public/images/road_vehicle.jpg).
 
 # License
 
-[MIT LICENSE](https://github.com/aurimas13/RoadApp/blob/main/LICENSE)
+[MIT LICENSE](https://github.com/aurimas13/Road-App/blob/main/LICENSE)
 
 # Citation
 

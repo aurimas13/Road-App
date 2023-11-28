@@ -128,7 +128,7 @@ def extract_traffic_data(query, period_from, period_until):
     # Calculate the sum and counts of all valid values for keys
     result_dict = get_sum_attribute_values(query, keys)
     
-    # Calculate respose with average values per attribute
+    # Calculate response with average values per attribute
     response_ls = get_response_values(result_dict, keys, period_from, period_until)
 
     return response_ls
@@ -164,7 +164,7 @@ def extract_weather_data(query, period_from, period_until):
     # Calculate the sum and counts of all valid values for keys
     result_dict = get_sum_attribute_values(query, keys)
     
-    # Calculate respose with average values per attribute
+    # Calculate response with average values per attribute
     response_ls = get_response_values(result_dict, keys, period_from, period_until)
 
     return response_ls
